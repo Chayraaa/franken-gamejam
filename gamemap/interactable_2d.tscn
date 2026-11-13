@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dqr37qqt035pi"]
+
+[ext_resource type="Script" uid="uid://cakem5e0bvwyx" path="res://gamemap/clickable.gd" id="1_svk2v"]
+[ext_resource type="Shader" uid="uid://cjir5e551s4l5" path="res://gamemap/interactable_2d.gdshader" id="2_f2bgm"]
+[ext_resource type="Texture2D" uid="uid://cew2ti77cylb6" path="res://gamemap/work_interactables.png" id="2_yko6e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0utv"]
+shader = ExtResource("2_f2bgm")
+shader_parameter/color = Color(0.8076375, 0.8076375, 0.012095169, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q20h5"]
+size = Vector2(29.999998, 30)
+
+[node name="Interactable2D" type="Node2D" unique_id=277553271]
+script = ExtResource("1_svk2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2135384288]
+material = SubResource("ShaderMaterial_d0utv")
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(2.9333336, 2.9333336)
+texture = ExtResource("2_yko6e")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1126087481]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=2433321]
+shape = SubResource("RectangleShape2D_q20h5")
+
+[connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_exited"]

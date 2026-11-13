@@ -103,10 +103,3 @@ func push(dir: Vector2i) -> bool:
 # When the block should be destroyed. Return shows success
 func destroy() -> bool:
 	return false
-
-# Runs for every block before any movement actions.
-func prepare_step() -> void:
-	pass
-
-
-func step() -> Variant: return null
