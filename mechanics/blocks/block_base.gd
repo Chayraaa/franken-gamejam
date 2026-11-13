@@ -1,11 +1,11 @@
 extends Node
 class_name BlockBase
 
-var grid: GridContainer
+var grid: TileMapLayer
 
 
 # Inits a block at a pos in a grid - not added to the scene yet
-func _init(pos: Vector2i, grid_container: GridContainer) -> void:
+func _init(pos: Vector2i, grid_container: TileMapLayer) -> void:
 	self.grid = grid_container
 
 # Called when the node enters the scene tree for the first time.
