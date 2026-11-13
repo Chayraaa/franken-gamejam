@@ -4,12 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://dcqe7peb48q8d" path="res://mechanics/blocks/box/box.tscn" id="2_w75uu"]
 [ext_resource type="PackedScene" uid="uid://dk3uow3i88qod" path="res://mechanics/blocks/mover/mover.tscn" id="3_1lbap"]
 [ext_resource type="PackedScene" uid="uid://dlf7uw2tuf3h8" path="res://mechanics/blocks/pusher/pusher.tscn" id="4_g8374"]
+[ext_resource type="PackedScene" uid="uid://ncavhr1lu42k" path="res://mechanics/blocks/rotator/rotator.tscn" id="5_044vu"]
+[ext_resource type="PackedScene" uid="uid://du5gmm7m65trm" path="res://mechanics/blocks/cloner/cloner.tscn" id="6_ls611"]
+[ext_resource type="PackedScene" uid="uid://bfn1j076vlvhh" path="res://mechanics/blocks/wall/wall.tscn" id="7_f132y"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nowcq"]
 resource_name = "Blocks"
 scenes/1/scene = ExtResource("2_w75uu")
 scenes/2/scene = ExtResource("3_1lbap")
 scenes/3/scene = ExtResource("4_g8374")
+scenes/4/scene = ExtResource("5_044vu")
+scenes/5/scene = ExtResource("6_ls611")
+scenes/6/scene = ExtResource("7_f132y")
 
 [sub_resource type="TileSet" id="TileSet_w75uu"]
 tile_size = Vector2i(32, 32)
@@ -21,7 +27,6 @@ display_grid = NodePath("TileMapLayer")
 size = Vector2i(20, 20)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=738058262]
-tile_map_data = PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0)
 tile_set = SubResource("TileSet_w75uu")
 
 [connection signal="step_finished" from="." to="." method="_on_step_finished"]

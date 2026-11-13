@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 
 func step() -> Variant:
 	var dir := Vector2i(base_direction.rotated(rotation).round())
-	var other: BlockBase = grid.start_grid.get(cell + dir)
+	var other: BlockBase = grid.get_planned_block_at(get_planned_cell() + dir)
 
 	if other != null:
 		other.push(dir)

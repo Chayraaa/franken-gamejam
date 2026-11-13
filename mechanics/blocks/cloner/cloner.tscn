@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://du5gmm7m65trm"]
+
+[ext_resource type="Texture2D" uid="uid://bl5arwjmsjb8w" path="res://mechanics/blocks/cloner/Screenshot From 2026-11-13 23-28-14.png" id="1_bc6fi"]
+[ext_resource type="Script" uid="uid://dnspbshcj5q3a" path="res://mechanics/blocks/cloner/cloner.gd" id="1_bldo0"]
+
+[node name="Cloner" type="Node2D" unique_id=551629902]
+script = ExtResource("1_bldo0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=838498408]
+position = Vector2(-1.4305115e-06, 0)
+scale = Vector2(0.10457516, 0.09726444)
+texture = ExtResource("1_bc6fi")

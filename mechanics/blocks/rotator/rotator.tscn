@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ncavhr1lu42k"]
+
+[ext_resource type="Script" uid="uid://jr8ct4cpqnsg" path="res://mechanics/blocks/rotator/rotator.gd" id="1_18rg8"]
+[ext_resource type="Texture2D" uid="uid://ccfq6dhuuxoc8" path="res://mechanics/blocks/rotator/Screenshot From 2026-11-13 23-27-03.png" id="1_q08md"]
+
+[node name="Rotator" type="Node2D" unique_id=1311437931]
+script = ExtResource("1_18rg8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=339909717]
+position = Vector2(-3.4939158e-06, 4.7683716e-07)
+scale = Vector2(0.14545453, 0.1403509)
+texture = ExtResource("1_q08md")
