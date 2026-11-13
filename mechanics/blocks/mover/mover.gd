@@ -11,10 +11,6 @@ func _process(delta: float) -> void:
 	pass
 
 func step() -> Variant:
-	var start: Vector2i = grid.start_grid.find_key(self)
-	var success: bool = push(Vector2i(1, 0))
-	if success:
-		return {"from": start, "to": grid.solution_grid.find_key(self), "rot": rotation}
-	else:
-		return null
+	push(Vector2i.RIGHT)
+	return null
 

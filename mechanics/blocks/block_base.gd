@@ -34,6 +34,8 @@ func move(pos: Vector2i) -> bool:
 # Pushes the block one field in the provided direction if possible. Return shows success
 func collect_push(dir: Vector2i, chain: Array[BlockBase]) -> bool:
 	var target := cell + dir
+	if grid.solution_grid.find_key(self) != null:
+		return grid.solution_grid.get(target) == self
 
 	if not grid.is_inside(target):
 		return false

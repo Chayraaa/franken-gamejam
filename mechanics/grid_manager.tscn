@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://chlat0lurrywx"]
+[gd_scene format=3 uid="uid://chlat0lurrywx"]
 
 [ext_resource type="Script" uid="uid://50k1cj3x7ojw" path="res://mechanics/grid_manager.gd" id="1_1r71q"]
 [ext_resource type="PackedScene" uid="uid://dcqe7peb48q8d" path="res://mechanics/blocks/box/box.tscn" id="2_w75uu"]
@@ -18,10 +18,10 @@ sources/0 = SubResource("TileSetScenesCollectionSource_nowcq")
 [node name="Grid" type="Node2D" unique_id=1083065542 node_paths=PackedStringArray("display_grid")]
 script = ExtResource("1_1r71q")
 display_grid = NodePath("TileMapLayer")
-size = Vector2i(10, 10)
+size = Vector2i(20, 20)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=738058262]
-tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAgABAAEAAAAAAAAAAQAAAAMAAAAAAAAAAwABAAMAAAAAAAAAAQACAAEAAAAAAAAAAQADAAEAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0)
 tile_set = SubResource("TileSet_w75uu")
 
 [connection signal="step_finished" from="." to="." method="_on_step_finished"]

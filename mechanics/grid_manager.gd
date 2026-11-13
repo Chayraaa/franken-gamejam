@@ -7,6 +7,13 @@ var solution_grid: Dictionary[Vector2i, BlockBase] = {}
 @export var size: Vector2i
 var solution: Array[Dictionary] = []
 
+# Priority list for the simulation
+@export var step_order: Array[Script] = [
+	preload("res://mechanics/blocks/pusher/pusher.gd"),
+	preload("res://mechanics/blocks/mover/mover.gd"),
+	preload("res://mechanics/blocks/box/box.gd"),
+]
+
 signal step_finished(data: Array[Dictionary])
 
 
@@ -23,10 +30,14 @@ func _ready() -> void:
 func step() -> void:
 	solution.clear()
 	solution_grid.clear()
-	for cell in start_grid:
-		var block: BlockBase = start_grid[cell]
+	var blocks: Array[BlockBase] = []
+	blocks.assign(start_grid.values())
+	blocks.sort_custom(_comes_before)
+	for block in blocks:
+		if solution.any(func(item): return item["block"] == block):
+			continue
 		var entry: Variant = block.step()
-		if entry != null:
+		if entry != null and not solution.any(func(item): return item["block"] == block):
 			solution.append({"block": block, "data": entry})
 
 	for cell in start_grid:
@@ -43,6 +54,23 @@ func step() -> void:
 		var block: BlockBase = start_grid[cell]
 		block.cell = cell
 	step_finished.emit(solution.duplicate())
+
+
+func get_step_priority(block: BlockBase) -> int:
+	for i in range(step_order.size()):
+		if step_order[i] != null and is_instance_of(block, step_order[i]):
+			return i
+	return step_order.size()
+
+
+func _comes_before(a: BlockBase, b: BlockBase) -> bool:
+	var priority_a := get_step_priority(a)
+	var priority_b := get_step_priority(b)
+	if priority_a != priority_b:
+		return priority_a < priority_b
+	if a.cell.y != b.cell.y:
+		return a.cell.y < b.cell.y
+	return a.cell.x < b.cell.x
 
 
 func _get_block_at(cell: Vector2i) -> BlockBase:
