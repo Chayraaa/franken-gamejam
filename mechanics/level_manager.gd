@@ -48,7 +48,9 @@ func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_pressed)
 	for button in [step_button, run_button, reset_button, dialog_button, completion_reset_button, continue_button]:
 		button.focus_mode = Control.FOCUS_NONE
-	get_viewport().size_changed.connect(_fit_camera)
+	get_viewport().size_changed.connect(_queue_camera_fit)
+	step_button.get_parent().resized.connect(_queue_camera_fit)
+	button_container.resized.connect(_queue_camera_fit)
 	load_level()
 
 
@@ -107,7 +109,7 @@ func load_level(show_dialog: bool = true) -> void:
 	if show_dialog:
 		to_load.show_text()
 	grid_manager.interaction_blocked = to_load.dialog_active
-	_fit_camera()
+	_queue_camera_fit()
 
 func _spawn_button(block: PackedScene, count: int) -> void:
 	var new_button: ButtonPuzzle = button_base.instantiate()
@@ -119,6 +121,23 @@ func _spawn_button(block: PackedScene, count: int) -> void:
 	
 
 
+func _queue_camera_fit() -> void:
+	# Containers settle after adding inventory buttons and resizing the window.
+	_fit_camera.call_deferred()
+
+
+func _get_camera_play_area() -> Rect2:
+	var viewport_size := get_viewport_rect().size
+	var top_rect: Rect2 = step_button.get_parent().get_global_rect()
+	var bottom_rect := button_container.get_global_rect()
+	var top := maxf(camera_padding, top_rect.end.y + camera_padding)
+	var bottom := minf(viewport_size.y - camera_padding, bottom_rect.position.y - camera_padding)
+	return Rect2(
+		Vector2(camera_padding, top),
+		Vector2(maxf(1.0, viewport_size.x - camera_padding * 2.0), maxf(1.0, bottom - top))
+	)
+
+
 func _fit_camera() -> void:
 	var index := current_level - 1
 	if index < 0 or index >= levels.get_child_count():
@@ -128,13 +147,11 @@ func _fit_camera() -> void:
 	if not bounds.has_area():
 		return
 	var viewport_size := get_viewport_rect().size
-	var available := (viewport_size - Vector2.ONE * camera_padding * 2.0).max(Vector2.ONE)
+	var play_area := _get_camera_play_area()
+	var available := play_area.size.max(Vector2.ONE)
 	var fit_zoom := minf(available.x / bounds.size.x, available.y / bounds.size.y)
-	# Whole-number enlargement keeps pixel art sharp; small windows can zoom out.
-	if fit_zoom >= 1.0:
-		fit_zoom = floorf(fit_zoom)
 	level_camera.anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
-	level_camera.global_position = bounds.get_center()
+	level_camera.global_position = bounds.get_center() + (viewport_size / 2.0 - play_area.get_center()) / fit_zoom
 	level_camera.zoom = Vector2.ONE * fit_zoom
 	level_camera.reset_smoothing()
 	level_camera.force_update_scroll()

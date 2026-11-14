@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bajm4d2ttwt2e" path="res://levels/level3.tscn" id="12_7foxy"]
 [ext_resource type="PackedScene" uid="uid://c70q1shkjqpvs" path="res://levels/level7.tscn" id="12_fjn34"]
 [ext_resource type="PackedScene" uid="uid://bh2d0kyebnqk7" path="res://levels/level4.tscn" id="12_fxgs3"]
+[ext_resource type="PackedScene" uid="uid://bog3i1wjykp4b" path="res://levels/level8.tscn" id="12_n5v2h"]
 [ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6egpn"]
@@ -243,7 +244,7 @@ position = Vector2(178.3349, 112.07357)
 [node name="Level6" parent="Levels" unique_id=833433543 instance=ExtResource("12_6egpn")]
 position = Vector2(166.01172, 109.04205)
 
-[node name="Level7" parent="Levels" unique_id=1077325593 instance=ExtResource("12_fjn34")]
+[node name="Level7" parent="Levels" unique_id=918501436 instance=ExtResource("12_fjn34")]
 position = Vector2(81.56298, 82.59772)
 building_blocks = Array[Dictionary]([{
 "block": ExtResource("5_o86sm"),
@@ -261,5 +262,8 @@ building_blocks = Array[Dictionary]([{
 "block": ExtResource("4_4jh4i"),
 "count": 10
 }])
+
+[node name="Level8" parent="Levels" unique_id=1077325593 instance=ExtResource("12_n5v2h")]
+position = Vector2(145.8244, 110.68872)
 
 [node name="Sandbox" parent="Levels" unique_id=1568218771 instance=ExtResource("11_i2vme")]
