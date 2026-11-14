@@ -6,10 +6,10 @@
 [node name="Gamemap" type="Node2D" unique_id=1799448745]
 position = Vector2(119, 111)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2038056503]
-position = Vector2(362, 210)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=101058056]
+position = Vector2(371, 292)
 scale = Vector2(2.525, 2.525)
 texture = ExtResource("1_gopxi")
 
 [node name="Interactable2D" parent="." unique_id=277553271 instance=ExtResource("2_k42st")]
-position = Vector2(448, 109)
+position = Vector2(473, 217.00002)

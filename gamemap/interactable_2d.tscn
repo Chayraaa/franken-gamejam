@@ -20,6 +20,7 @@ size = Vector2(29.999998, 30)
 script = ExtResource("1_svk2v")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2135384288]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_d0utv")
 position = Vector2(0, 2.3841858e-07)
 scale = Vector2(2.9333336, 2.9333336)
