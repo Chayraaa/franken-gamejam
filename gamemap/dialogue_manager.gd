@@ -2,6 +2,7 @@ extends Node2D
 class_name DialogueManager
 
 @export var current_task: int = 0
+@export var level_manager: LevelManager
 
 @onready var text_field: RichTextLabel = %TaskTextBody
 
@@ -24,14 +25,11 @@ func load_dialogue() -> void:
 
 func _on_task_accept_button_pressed() -> void:
 	# Lade das level
-	# Temp:
-	if %DialogueRoot.get_child_count() <= current_task:
-		return
-	var to_load: DialogueTree = %DialogueRoot.get_child(current_task)
-	print(to_load.get_children())
-	to_load.get_child(0).trigger_effect()
-	current_task += 1
-	load_dialogue()
+	print("accept")
+	visible = false
+	%DialogueUI.visible = false
+	level_manager.load_level(true)
+	
 	
 
 
@@ -42,3 +40,15 @@ func _on_task_decline_button_pressed() -> void:
 	to_load.get_child(1).trigger_effect()
 	current_task += 1
 	load_dialogue()
+
+
+func _on_level_manager_level_finished() -> void:
+	if %DialogueRoot.get_child_count() <= current_task:
+		return
+	var to_load: DialogueTree = %DialogueRoot.get_child(current_task)
+	print(to_load.get_children())
+	to_load.get_child(0).trigger_effect()
+	current_task += 1
+	load_dialogue()
+	visible = true
+	%DialogueUI.visible = true

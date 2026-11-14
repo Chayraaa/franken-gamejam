@@ -9,6 +9,7 @@
 script = ExtResource("1_7i0iu")
 
 [node name="DialogueUI" type="CanvasLayer" parent="." unique_id=1199525203]
+unique_name_in_owner = true
 
 [node name="Control" type="Control" parent="DialogueUI" unique_id=1822292517]
 layout_mode = 3

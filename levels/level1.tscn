@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://05m3ys5fneq"]
 
-[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 [ext_resource type="Script" uid="uid://xkdar73umc3d" path="res://levels/level.gd" id="1_ifyw6"]
 [ext_resource type="PackedScene" uid="uid://dk3uow3i88qod" path="res://mechanics/blocks/mover/mover.tscn" id="2_cdo1f"]
 [ext_resource type="PackedScene" uid="uid://dlf7uw2tuf3h8" path="res://mechanics/blocks/pusher/pusher.tscn" id="3_52oqb"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfn1j076vlvhh" path="res://mechanics/blocks/wall/wall.tscn" id="7_4a2m7"]
 [ext_resource type="Texture2D" uid="uid://dyf5orh1rxnww" path="res://mechanics/tiles/tiles-tileset.png" id="8_s6xxf"]
 [ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="9_k47ef"]
+[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_f7u7y"]
 resource_name = "Blocks"
@@ -94,6 +94,8 @@ text = "Das ist random tutorial text"
 fit_content = true
 scroll_active = false
 
+[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/TextDisplay" unique_id=559385810 instance=ExtResource("99_shadow")]
+
 [node name="SkipButton" type="Button" parent="CanvasLayer/Control/CenterContainer/DialogBox" unique_id=411858515]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 48)
@@ -102,6 +104,4 @@ size_flags_horizontal = 8
 focus_mode = 0
 text = "Skip"
 
-[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/TextDisplay" instance=ExtResource("99_shadow")]
-
-[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/SkipButton" instance=ExtResource("99_shadow")]
+[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/SkipButton" unique_id=910688441 instance=ExtResource("99_shadow")]

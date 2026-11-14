@@ -1,3 +1,17 @@
 [gd_scene format=3 uid="uid://wqrbvpptuyaj"]
 
+[ext_resource type="PackedScene" uid="uid://chlat0lurrywx" path="res://mechanics/puzzle_base.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bvwwi5ndwtfcc" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cpuqtvn7n2k54" path="res://gamemap/dialogueManager.tscn" id="1_ig7tw"]
+
 [node name="Main" type="Node2D" unique_id=1015319845]
+script = ExtResource("1_h2yge")
+
+[node name="LevelManager" parent="." unique_id=1144776670 instance=ExtResource("1_0xm2m")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Dialogues" parent="." unique_id=1854594120 node_paths=PackedStringArray("level_manager") instance=ExtResource("1_ig7tw")]
+level_manager = NodePath("../LevelManager")
+
+[connection signal="level_finished" from="LevelManager" to="Dialogues" method="_on_level_manager_level_finished"]

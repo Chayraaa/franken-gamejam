@@ -142,3 +142,7 @@ func _add_board_backing() -> void:
 		to_local(Vector2(bounds.position.x, bounds.end.y)),
 	])
 	add_child(backing)
+
+func set_visibility(b: bool) -> void:
+	get_child(2).visible = b
+	visible = b

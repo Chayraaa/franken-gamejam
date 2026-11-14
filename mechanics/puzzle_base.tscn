@@ -35,10 +35,11 @@ script = ExtResource("1_dnp8w")
 anchor_mode = 0
 zoom = Vector2(2, 2)
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1988616878]
+[node name="BackgroundCanvas" type="CanvasLayer" parent="." unique_id=1988616878]
+unique_name_in_owner = true
 layer = -1
 
-[node name="Background" type="TextureRect" parent="CanvasLayer2" unique_id=474747388]
+[node name="Background" type="TextureRect" parent="BackgroundCanvas" unique_id=474747388]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,11 +47,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("2_o86sm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1714668591]
+[node name="GUI" type="CanvasLayer" parent="." unique_id=1714668591]
+unique_name_in_owner = true
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1599458179]
+[node name="Control" type="Control" parent="GUI" unique_id=1599458179]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +63,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_7po70")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=323723853]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control" unique_id=323723853]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,80 +72,80 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Control3" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=592846129]
+[node name="Control3" type="Control" parent="GUI/Control/VBoxContainer" unique_id=592846129]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1518313650]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/VBoxContainer" unique_id=1518313650]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 mouse_filter = 2
 alignment = 1
 
-[node name="StepButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1441507035]
+[node name="StepButton" type="Button" parent="GUI/Control/VBoxContainer/HBoxContainer" unique_id=1441507035]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Step"
 
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/StepButton" unique_id=118280505 instance=ExtResource("99_shadow")]
+[node name="DropShadow" parent="GUI/Control/VBoxContainer/HBoxContainer/StepButton" unique_id=118280505 instance=ExtResource("99_shadow")]
 
-[node name="RunButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1131952220]
+[node name="RunButton" type="Button" parent="GUI/Control/VBoxContainer/HBoxContainer" unique_id=1131952220]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Run"
 
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/RunButton" unique_id=103118196 instance=ExtResource("99_shadow")]
+[node name="DropShadow" parent="GUI/Control/VBoxContainer/HBoxContainer/RunButton" unique_id=103118196 instance=ExtResource("99_shadow")]
 
-[node name="ResetButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=211437914]
+[node name="ResetButton" type="Button" parent="GUI/Control/VBoxContainer/HBoxContainer" unique_id=211437914]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Reset"
 
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/ResetButton" unique_id=300220730 instance=ExtResource("99_shadow")]
+[node name="DropShadow" parent="GUI/Control/VBoxContainer/HBoxContainer/ResetButton" unique_id=300220730 instance=ExtResource("99_shadow")]
 
-[node name="DialogButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1724207634]
+[node name="DialogButton" type="Button" parent="GUI/Control/VBoxContainer/HBoxContainer" unique_id=1724207634]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Instructions"
 
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/DialogButton" unique_id=1512679440 instance=ExtResource("99_shadow")]
+[node name="DropShadow" parent="GUI/Control/VBoxContainer/HBoxContainer/DialogButton" unique_id=1512679440 instance=ExtResource("99_shadow")]
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=892762648]
+[node name="Control" type="Control" parent="GUI/Control/VBoxContainer" unique_id=892762648]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1317302027]
+[node name="ButtonContainer" type="HBoxContainer" parent="GUI/Control/VBoxContainer" unique_id=1317302027]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer/ButtonContainer" unique_id=1575798260]
+[node name="Control" type="Control" parent="GUI/Control/VBoxContainer/ButtonContainer" unique_id=1575798260]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Control2" type="Control" parent="CanvasLayer/Control/VBoxContainer/ButtonContainer" unique_id=897350746]
+[node name="Control2" type="Control" parent="GUI/Control/VBoxContainer/ButtonContainer" unique_id=897350746]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Control2" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=583059526]
+[node name="Control2" type="Control" parent="GUI/Control/VBoxContainer" unique_id=583059526]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 mouse_filter = 2
 
-[node name="GoalTickTitle" type="Label" parent="CanvasLayer/Control" unique_id=1027420956]
+[node name="GoalTickTitle" type="Label" parent="GUI/Control" unique_id=1027420956]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -158,7 +161,7 @@ theme_override_font_sizes/font_size = 96
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CompletionScreen" type="ColorRect" parent="CanvasLayer/Control" unique_id=1437636866]
+[node name="CompletionScreen" type="ColorRect" parent="GUI/Control" unique_id=1437636866]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -169,7 +172,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.06, 0.05, 0.04, 0.75)
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/CompletionScreen" unique_id=251740685]
+[node name="CenterContainer" type="CenterContainer" parent="GUI/Control/CompletionScreen" unique_id=251740685]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,37 +180,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CompletionScreen/CenterContainer" unique_id=1544113958]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/CompletionScreen/CenterContainer" unique_id=1544113958]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Title" type="Label" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer" unique_id=58759370]
+[node name="Title" type="Label" parent="GUI/Control/CompletionScreen/CenterContainer/VBoxContainer" unique_id=58759370]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
 theme_override_font_sizes/font_size = 64
 text = "Geschafft!"
 horizontal_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer" unique_id=1647803356]
+[node name="Buttons" type="HBoxContainer" parent="GUI/Control/CompletionScreen/CenterContainer/VBoxContainer" unique_id=1647803356]
 layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="CompletionResetButton" type="Button" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons" unique_id=106350653]
+[node name="CompletionResetButton" type="Button" parent="GUI/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons" unique_id=106350653]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 56)
 layout_mode = 2
 text = "Reset"
 
-[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/CompletionResetButton" unique_id=1163102038 instance=ExtResource("99_shadow")]
+[node name="DropShadow" parent="GUI/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/CompletionResetButton" unique_id=1163102038 instance=ExtResource("99_shadow")]
 
-[node name="ContinueButton" type="Button" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons" unique_id=463297669]
+[node name="ContinueButton" type="Button" parent="GUI/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons" unique_id=463297669]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 56)
 layout_mode = 2
 text = "Weiter"
 
-[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/ContinueButton" unique_id=1000636475 instance=ExtResource("99_shadow")]
+[node name="DropShadow" parent="GUI/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/ContinueButton" unique_id=1000636475 instance=ExtResource("99_shadow")]
 
 [node name="GridManager" type="Node2D" parent="." unique_id=1083065542 node_paths=PackedStringArray("display_grid")]
 unique_name_in_owner = true
