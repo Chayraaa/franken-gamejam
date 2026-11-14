@@ -30,6 +30,7 @@ var placed_buttons: Dictionary[BlockBase, ButtonPuzzle] = {}
 	preload("res://mechanics/blocks/box/box.gd"),
 ]
 
+signal simulation_started()
 signal step_finished(data: Array[Dictionary])
 signal goal_tick_count_changed(count: int)
 
@@ -164,6 +165,8 @@ func stop_running() -> void:
 func step() -> void:
 	if is_animating or interaction_blocked or simulation_finished:
 		return
+	if not editing_locked:
+		simulation_started.emit()
 	editing_locked = true
 	cancel_placement()
 	solution.clear()

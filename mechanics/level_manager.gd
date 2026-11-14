@@ -12,6 +12,7 @@ class_name LevelManager
 @onready var button_base: PackedScene = preload("res://ui/button-puzzle.tscn")
 
 var initial_levels: Array[PackedScene] = []
+var player_start_layout: Array[Dictionary] = []
 var goal_tick_count: int = 0
 var goal_title_tween: Tween
 var completion_confirmed: bool = false
@@ -37,6 +38,7 @@ func _ready() -> void:
 		initial_levels.append(snapshot)
 		level.visible = false
 	
+	grid_manager.simulation_started.connect(_capture_start_layout)
 	grid_manager.goal_tick_count_changed.connect(_on_goal_tick_count_changed)
 	step_button.pressed.connect(grid_manager.step)
 	run_button.pressed.connect(grid_manager.start_running)
@@ -59,6 +61,9 @@ func _process(_delta: float) -> void:
 	dialog_button.disabled = grid_manager.is_animating or grid_manager.interaction_blocked or grid_manager.simulation_finished
 
 func reset_level() -> void:
+	if not grid_manager.editing_locked:
+		_capture_start_layout()
+	var layout_to_restore := player_start_layout.duplicate(true)
 	grid_manager.stop_running()
 	grid_manager.cancel_placement()
 	var index := current_level - 1
@@ -73,9 +78,11 @@ func reset_level() -> void:
 	levels.add_child(restored)
 	levels.move_child(restored, index)
 	load_level(false)
+	_restore_start_layout(layout_to_restore)
 
 
 func load_level(show_dialog: bool = true) -> void:
+	player_start_layout.clear()
 	completion_screen.hide()
 	completion_confirmed = false
 	resume_run_after_dialog = false
@@ -221,3 +228,46 @@ func set_visibility(b: bool) -> void:
 		grid_manager.stop_running()
 		grid_manager.cancel_placement()
 	process_mode = Node.PROCESS_MODE_INHERIT if b else Node.PROCESS_MODE_DISABLED
+
+
+func _capture_start_layout() -> void:
+	player_start_layout.clear()
+	for cell: Vector2i in grid_manager.start_grid:
+		var block: BlockBase = grid_manager.start_grid[cell]
+		var button: ButtonPuzzle = grid_manager.placed_buttons.get(block)
+		var entry := {
+			"cell": cell,
+			"scene": button.block if is_instance_valid(button) else null,
+			"rotation": block.rotation,
+		}
+		if block is Rotator:
+			entry["clockwise"] = block.clockwise
+		player_start_layout.append(entry)
+
+
+func _restore_start_layout(layout: Array[Dictionary]) -> void:
+	player_start_layout = layout
+	for entry in layout:
+		var cell: Vector2i = entry["cell"]
+		var block: BlockBase
+		if entry["scene"] == null:
+			block = grid_manager.start_grid.get(cell)
+		else:
+			var button: ButtonPuzzle
+			for child in button_container.get_children():
+				if child is ButtonPuzzle and child.block == entry["scene"]:
+					button = child
+					break
+			if button == null:
+				continue
+			block = button.block.instantiate() as BlockBase
+			block.setup(cell, grid_manager)
+			block.position = grid_manager.display_grid.map_to_local(cell)
+			grid_manager.display_grid.add_child(block)
+			grid_manager.start_grid[cell] = block
+			grid_manager.placed_buttons[block] = button
+			button.count -= 1
+		if block != null:
+			block.rotation = entry["rotation"]
+			if block is Rotator:
+				block.clockwise = entry["clockwise"]
