@@ -120,5 +120,38 @@ script = ExtResource("3_i4e3j")
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task2" unique_id=1985827970]
 script = ExtResource("3_i4e3j")
 
+[node name="Task3" type="Node2D" parent="DialogueRoot" unique_id=1001141768]
+script = ExtResource("2_3bxp4")
+task_text = "Dialog 3"
+level_number = 3
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task3" unique_id=838070682]
+script = ExtResource("3_i4e3j")
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task3" unique_id=1853164788]
+script = ExtResource("3_i4e3j")
+
+[node name="Task4" type="Node2D" parent="DialogueRoot" unique_id=1282863584]
+script = ExtResource("2_3bxp4")
+task_text = "Dialog 4"
+level_number = 4
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task4" unique_id=775231359]
+script = ExtResource("3_i4e3j")
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task4" unique_id=175155294]
+script = ExtResource("3_i4e3j")
+
+[node name="Task5" type="Node2D" parent="DialogueRoot" unique_id=2137053729]
+script = ExtResource("2_3bxp4")
+task_text = "Dialog 5"
+level_number = 5
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task5" unique_id=1932284758]
+script = ExtResource("3_i4e3j")
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task5" unique_id=1675827012]
+script = ExtResource("3_i4e3j")
+
 [connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskAcceptButton" to="." method="_on_task_accept_button_pressed"]
 [connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskDeclineButton" to="." method="_on_task_decline_button_pressed"]
