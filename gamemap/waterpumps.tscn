@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c401bhdumlti4"]
+
+[ext_resource type="Texture2D" uid="uid://berl2f3bl32ol" path="res://gamemap/waterpumps.png" id="1_qyllo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q20h5"]
+size = Vector2(278, 186)
+
+[node name="Waterpumps" type="Sprite2D" unique_id=376059041]
+texture = ExtResource("1_qyllo")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2124457271]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1854986936]
+shape = SubResource("RectangleShape2D_q20h5")

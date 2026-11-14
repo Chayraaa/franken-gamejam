@@ -62,3 +62,10 @@ func _on_level_manager_level_finished() -> void:
 		task.get_child(0).trigger_effect()
 	current_task += 1
 	load_dialogue()
+	
+func set_visibility(b: bool) -> void:
+	visible = b
+	if b:
+		%DialogueUI.show()
+	else:
+		%DialogueUI.hide()

@@ -175,5 +175,17 @@ script = ExtResource("3_i4e3j")
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task7" unique_id=1041310703]
 script = ExtResource("3_i4e3j")
 
+[node name="Task8" type="Node2D" parent="DialogueRoot" unique_id=1596059784]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "Dialog 8"
+level_number = 8
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task8" unique_id=1634084794]
+script = ExtResource("3_i4e3j")
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task8" unique_id=1719296710]
+script = ExtResource("3_i4e3j")
+
 [connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskAcceptButton" to="." method="_on_task_accept_button_pressed"]
 [connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskDeclineButton" to="." method="_on_task_decline_button_pressed"]
