@@ -187,6 +187,24 @@ func step() -> void:
 		if entry != null and not solution.any(func(item): return item["block"] == block):
 			solution.append({"block": block, "data": entry})
 
+	# A mover at a corner may vacate a cell only after its followers tried to
+	# move. Retry blocked movers until no further cell can be freed. Successful
+	# movers are excluded, so this never grants an extra movement in a tick.
+	var pending_movers: Array[BlockBase] = []
+	for block in blocks:
+		if block is Mover and block.moved_directions.is_empty():
+			pending_movers.append(block)
+	while not pending_movers.is_empty():
+		var made_progress := false
+		for block in pending_movers.duplicate():
+			if block.moved_directions.is_empty():
+				block.step()
+			if not block.moved_directions.is_empty():
+				pending_movers.erase(block)
+				made_progress = true
+		if not made_progress:
+			break
+
 	for cell in start_grid:
 		var block: BlockBase = start_grid[cell]
 		if not solution.any(func(entry): return entry["block"] == block):

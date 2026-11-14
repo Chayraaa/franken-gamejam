@@ -17,3 +17,11 @@ func step() -> Variant:
 	push(dir)
 	return null
 
+
+
+func collect_push(dir: Vector2i, chain: Array[BlockBase]) -> bool:
+	# Movers cannot push a rotator by direct contact. An intervening box
+	# can still transmit the push to the rotator through the normal chain.
+	if grid.get_planned_block_at(get_planned_cell() + dir) is Rotator:
+		return false
+	return super.collect_push(dir, chain)
