@@ -41,6 +41,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Count" type="Label" parent="Content" unique_id=645638435]
+mouse_filter = 2
 layout_mode = 2
 vertical_alignment = 1
 

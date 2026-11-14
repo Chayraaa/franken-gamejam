@@ -93,7 +93,14 @@ func _update_preview() -> void:
 
 
 func _mouse_over_ui() -> bool:
-	return get_viewport().gui_get_hovered_control() != null
+	# Decorative controls are not interactive UI. Child labels/icons still count
+	# as hovering their button even if their own mouse filter changes.
+	var control := get_viewport().gui_get_hovered_control()
+	while control != null:
+		if control is BaseButton:
+			return true
+		control = control.get_parent_control()
+	return false
 
 
 func _input(event: InputEvent) -> void:

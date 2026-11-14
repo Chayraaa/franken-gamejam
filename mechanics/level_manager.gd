@@ -31,6 +31,8 @@ signal goal_tick_count_changed(count: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Decorative screen backgrounds must never consume puzzle mouse events.
+	$CanvasLayer2/Background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	for level: Level in levels.get_children():
 		var snapshot := PackedScene.new()
 		snapshot.pack(level)

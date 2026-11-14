@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://chlat0lurrywx"]
 
-[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 [ext_resource type="Script" uid="uid://kg7hrtvx6g51" path="res://mechanics/level_manager.gd" id="1_dnp8w"]
 [ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="2_7po70"]
 [ext_resource type="Texture2D" uid="uid://2p7vps44ndxp" path="res://ui/FAFO_LevelBG..png" id="2_o86sm"]
@@ -14,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bwemalnc3tqsf" path="res://levels/level2.tscn" id="10_4jh4i"]
 [ext_resource type="PackedScene" uid="uid://05m3ys5fneq" path="res://levels/level1.tscn" id="10_7po70"]
 [ext_resource type="PackedScene" uid="uid://d35xtlvadeq2q" path="res://levels/sandbox.tscn" id="11_i2vme"]
+[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6egpn"]
 resource_name = "Blocks"
@@ -88,11 +88,15 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Step"
 
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/StepButton" unique_id=118280505 instance=ExtResource("99_shadow")]
+
 [node name="RunButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1131952220]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Run"
+
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/RunButton" unique_id=103118196 instance=ExtResource("99_shadow")]
 
 [node name="ResetButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=211437914]
 unique_name_in_owner = true
@@ -100,11 +104,15 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Reset"
 
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/ResetButton" unique_id=300220730 instance=ExtResource("99_shadow")]
+
 [node name="DialogButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1724207634]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Instructions"
+
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/DialogButton" unique_id=1512679440 instance=ExtResource("99_shadow")]
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=892762648]
 layout_mode = 2
@@ -191,11 +199,15 @@ custom_minimum_size = Vector2(140, 56)
 layout_mode = 2
 text = "Reset"
 
+[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/CompletionResetButton" unique_id=1163102038 instance=ExtResource("99_shadow")]
+
 [node name="ContinueButton" type="Button" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons" unique_id=463297669]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 56)
 layout_mode = 2
 text = "Weiter"
+
+[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/ContinueButton" unique_id=1000636475 instance=ExtResource("99_shadow")]
 
 [node name="GridManager" type="Node2D" parent="." unique_id=1083065542 node_paths=PackedStringArray("display_grid")]
 unique_name_in_owner = true
@@ -215,18 +227,5 @@ unique_name_in_owner = true
 
 [node name="Sandbox" parent="Levels" unique_id=1568218771 instance=ExtResource("11_i2vme")]
 visible = false
-
-
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/StepButton" instance=ExtResource("99_shadow")]
-
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/RunButton" instance=ExtResource("99_shadow")]
-
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/ResetButton" instance=ExtResource("99_shadow")]
-
-[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/DialogButton" instance=ExtResource("99_shadow")]
-
-[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/CompletionResetButton" instance=ExtResource("99_shadow")]
-
-[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/ContinueButton" instance=ExtResource("99_shadow")]
 
 [connection signal="step_finished" from="GridManager" to="GridManager" method="_on_step_finished"]
