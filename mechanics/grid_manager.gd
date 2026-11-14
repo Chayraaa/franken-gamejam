@@ -340,6 +340,7 @@ func _animate_step(data: Array[Dictionary], previous_visuals: Dictionary) -> voi
 	if display_grid == null or step_animation_duration <= 0.0:
 		_finish_animated_step(data)
 		return
+	var animation_duration := minf(step_animation_duration, run_timer.wait_time * 0.75)
 	is_animating = true
 	step_tween = create_tween().set_parallel(true)
 	step_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -358,9 +359,9 @@ func _animate_step(data: Array[Dictionary], previous_visuals: Dictionary) -> voi
 			block.rotation = final_rotation
 			var final_alpha := block.modulate.a
 			block.modulate.a = 0.0
-			step_tween.tween_property(block, "modulate:a", final_alpha, step_animation_duration)
-		step_tween.tween_property(block, "position", destination, step_animation_duration)
-		step_tween.tween_property(block, "rotation", final_rotation, step_animation_duration)
+			step_tween.tween_property(block, "modulate:a", final_alpha, animation_duration)
+		step_tween.tween_property(block, "position", destination, animation_duration)
+		step_tween.tween_property(block, "rotation", final_rotation, animation_duration)
 	step_tween.chain().tween_callback(_finish_animated_step.bind(data))
 
 

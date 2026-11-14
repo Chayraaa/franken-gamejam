@@ -17,9 +17,13 @@ var goal_tick_count: int = 0
 var goal_title_tween: Tween
 var completion_confirmed: bool = false
 var resume_run_after_dialog: bool = false
+const SIM_SPEED_INTERVALS: Array[float] = [1.0, 0.5, 0.2]
+const SIM_SPEED_LABELS: Array[String] = ["Slow: 1 s", "Normal: 0.5 s", "Fast: 0.2 s"]
+var sim_speed_index: int = 1
 
 @onready var step_button: Button = %StepButton
 @onready var run_button: Button = %RunButton
+@onready var sim_speed_button: Button = %SimSpeedButton
 @onready var reset_button: Button = %ResetButton
 @onready var dialog_button: Button = %DialogButton
 @onready var goal_tick_title: Label = %GoalTickTitle
@@ -42,11 +46,13 @@ func _ready() -> void:
 	grid_manager.goal_tick_count_changed.connect(_on_goal_tick_count_changed)
 	step_button.pressed.connect(grid_manager.step)
 	run_button.pressed.connect(grid_manager.start_running)
+	sim_speed_button.pressed.connect(_cycle_sim_speed)
+	_apply_sim_speed()
 	reset_button.pressed.connect(reset_level)
 	dialog_button.pressed.connect(show_instructions)
 	completion_reset_button.pressed.connect(reset_level)
 	continue_button.pressed.connect(_on_continue_pressed)
-	for button in [step_button, run_button, reset_button, dialog_button, completion_reset_button, continue_button]:
+	for button in [step_button, run_button, sim_speed_button, reset_button, dialog_button, completion_reset_button, continue_button]:
 		button.focus_mode = Control.FOCUS_NONE
 	get_viewport().size_changed.connect(_queue_camera_fit)
 	step_button.get_parent().resized.connect(_queue_camera_fit)
@@ -288,3 +294,16 @@ func _restore_start_layout(layout: Array[Dictionary]) -> void:
 			block.rotation = entry["rotation"]
 			if block is Rotator:
 				block.clockwise = entry["clockwise"]
+
+
+func _cycle_sim_speed() -> void:
+	sim_speed_index = (sim_speed_index + 1) % SIM_SPEED_INTERVALS.size()
+	_apply_sim_speed()
+
+
+func _apply_sim_speed() -> void:
+	sim_speed_button.text = SIM_SPEED_LABELS[sim_speed_index]
+	var running := not grid_manager.run_timer.is_stopped()
+	grid_manager.run_timer.wait_time = SIM_SPEED_INTERVALS[sim_speed_index]
+	if running:
+		grid_manager.run_timer.start()

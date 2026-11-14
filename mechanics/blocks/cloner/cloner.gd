@@ -14,7 +14,7 @@ func step() -> Variant:
 	var origin: Vector2i = cell if planned_cell == null else planned_cell
 	var target := origin + dir
 	var source: BlockBase = grid.get_planned_block_at(origin - dir)
-	if source == null or not grid.is_inside(target):
+	if source == null or source is Wall or not grid.is_inside(target):
 		return null
 	var obstacle := grid.get_planned_block_at(target)
 	if obstacle != null:

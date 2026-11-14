@@ -16,9 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://7m6f0eb6foy8" path="res://levels/level5.tscn" id="12_1giwo"]
 [ext_resource type="PackedScene" uid="uid://c7vywfuddikar" path="res://levels/level6.tscn" id="12_6egpn"]
 [ext_resource type="PackedScene" uid="uid://bajm4d2ttwt2e" path="res://levels/level3.tscn" id="12_7foxy"]
-[ext_resource type="PackedScene" uid="uid://c70q1shkjqpvs" path="res://levels/level7.tscn" id="12_fjn34"]
+[ext_resource type="PackedScene" uid="uid://c4g2pkf3poisk" path="res://levels/level10.tscn" id="12_7nw8j"]
+[ext_resource type="PackedScene" uid="uid://c70q1shkjqpvs" path="res://levels/level8.tscn" id="12_fjn34"]
 [ext_resource type="PackedScene" uid="uid://bh2d0kyebnqk7" path="res://levels/level4.tscn" id="12_fxgs3"]
-[ext_resource type="PackedScene" uid="uid://bog3i1wjykp4b" path="res://levels/level8.tscn" id="12_n5v2h"]
+[ext_resource type="PackedScene" uid="uid://b50jrwqpoo32l" path="res://levels/level9.tscn" id="12_n5v2h"]
+[ext_resource type="PackedScene" uid="uid://dhufu2txm47ss" path="res://levels/level11.tscn" id="12_nn0su"]
+[ext_resource type="PackedScene" uid="uid://bog3i1wjykp4b" path="res://levels/level7.tscn" id="19_j80gl"]
 [ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6egpn"]
@@ -106,6 +109,16 @@ layout_mode = 2
 text = "Run"
 
 [node name="DropShadow" parent="GUI/Control/VBoxContainer/HBoxContainer/RunButton" unique_id=103118196 instance=ExtResource("99_shadow")]
+
+[node name="SimSpeedButton" type="Button" parent="GUI/Control/VBoxContainer/HBoxContainer" unique_id=1690286594]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+tooltip_text = "Klicken: Slow (1 s), Normal (0.5 s), Fast (0.2 s)"
+focus_mode = 0
+text = "Normal: 0.5 s"
+
+[node name="DropShadow" parent="GUI/Control/VBoxContainer/HBoxContainer/SimSpeedButton" unique_id=1728566381 instance=ExtResource("99_shadow")]
 
 [node name="ResetButton" type="Button" parent="GUI/Control/VBoxContainer/HBoxContainer" unique_id=211437914]
 unique_name_in_owner = true
@@ -244,7 +257,10 @@ position = Vector2(178.3349, 112.07357)
 [node name="Level6" parent="Levels" unique_id=833433543 instance=ExtResource("12_6egpn")]
 position = Vector2(166.01172, 109.04205)
 
-[node name="Level7" parent="Levels" unique_id=918501436 instance=ExtResource("12_fjn34")]
+[node name="Level7" parent="Levels" unique_id=604759939 instance=ExtResource("19_j80gl")]
+position = Vector2(145.8244, 110.68872)
+
+[node name="Level8" parent="Levels" unique_id=918501436 instance=ExtResource("12_fjn34")]
 position = Vector2(81.56298, 82.59772)
 building_blocks = Array[Dictionary]([{
 "block": ExtResource("5_o86sm"),
@@ -263,7 +279,10 @@ building_blocks = Array[Dictionary]([{
 "count": 10
 }])
 
-[node name="Level8" parent="Levels" unique_id=1077325593 instance=ExtResource("12_n5v2h")]
-position = Vector2(145.8244, 110.68872)
+[node name="Level9" parent="Levels" unique_id=2146240974 instance=ExtResource("12_n5v2h")]
+
+[node name="Level10" parent="Levels" unique_id=1808594184 instance=ExtResource("12_7nw8j")]
+
+[node name="Level11" parent="Levels" unique_id=1077325593 instance=ExtResource("12_nn0su")]
 
 [node name="Sandbox" parent="Levels" unique_id=1568218771 instance=ExtResource("11_i2vme")]
