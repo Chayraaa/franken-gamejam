@@ -53,10 +53,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var running := not grid_manager.run_timer.is_stopped()
-	step_button.disabled = running or grid_manager.simulation_finished or grid_manager.interaction_blocked
-	run_button.disabled = running or grid_manager.simulation_finished or grid_manager.interaction_blocked
+	step_button.disabled = grid_manager.is_animating or running or grid_manager.simulation_finished or grid_manager.interaction_blocked
+	run_button.disabled = grid_manager.is_animating or running or grid_manager.simulation_finished or grid_manager.interaction_blocked
 	reset_button.disabled = grid_manager.interaction_blocked
-	dialog_button.disabled = grid_manager.interaction_blocked or grid_manager.simulation_finished
+	dialog_button.disabled = grid_manager.is_animating or grid_manager.interaction_blocked or grid_manager.simulation_finished
 
 func reset_level() -> void:
 	grid_manager.stop_running()
@@ -65,6 +65,7 @@ func reset_level() -> void:
 	if index < 0 or index >= initial_levels.size():
 		return
 	var old_level := levels.get_child(index) as Level
+	grid_manager.cancel_step_animation()
 	old_level.hide_dialog()
 	levels.remove_child(old_level)
 	old_level.queue_free()
@@ -171,9 +172,6 @@ func _on_continue_pressed() -> void:
 	for level: Level in levels.get_children():
 		level.visible = false
 	
-	# temp:
-	current_level += 1
-	load_level(true)
 	level_finished.emit()
 
 
@@ -199,7 +197,7 @@ func _on_dialog_finished() -> void:
 
 
 func show_instructions() -> void:
-	if grid_manager.interaction_blocked or grid_manager.simulation_finished:
+	if grid_manager.is_animating or grid_manager.interaction_blocked or grid_manager.simulation_finished:
 		return
 	var level := levels.get_child(current_level - 1) as Level
 	if level.display_text.is_empty():
@@ -214,5 +212,12 @@ func set_visibility(b: bool) -> void:
 	visible = b
 	%BackgroundCanvas.visible = b
 	%GUI.visible = b
-	for level in levels.get_children():
-		level.set_visibility(b)
+	# CanvasLayers are independent of their Node2D parent's visibility.
+	for index in range(levels.get_child_count()):
+		var level := levels.get_child(index) as Level
+		level.set_visibility(b and index == current_level - 1)
+	if not b:
+		grid_manager.cancel_step_animation()
+		grid_manager.stop_running()
+		grid_manager.cancel_placement()
+	process_mode = Node.PROCESS_MODE_INHERIT if b else Node.PROCESS_MODE_DISABLED

@@ -144,5 +144,5 @@ func _add_board_backing() -> void:
 	add_child(backing)
 
 func set_visibility(b: bool) -> void:
-	get_child(2).visible = b
+	text_display.get_parent().get_parent().get_parent().visible = b
 	visible = b

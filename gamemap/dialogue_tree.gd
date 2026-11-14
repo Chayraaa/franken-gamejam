@@ -2,6 +2,7 @@ extends Node2D
 class_name DialogueTree
 
 @export_multiline var task_text: String
+@export_range(1, 100, 1) var level_number: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

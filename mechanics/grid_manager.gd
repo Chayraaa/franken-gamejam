@@ -6,6 +6,9 @@ var solution_grid: Dictionary[Vector2i, BlockBase] = {}
 @export var display_grid: TileMapLayer
 var placement_grid: TileMapLayer
 @export var size: Vector2i
+@export_range(0.0, 2.0, 0.05) var step_animation_duration: float = 0.3
+var is_animating: bool = false
+var step_tween: Tween
 var grid_origin: Vector2i = Vector2i.ZERO
 var solution: Array[Dictionary] = []
 var selected_button: ButtonPuzzle
@@ -42,6 +45,7 @@ func _ready() -> void:
 
 func load_grid(layer: TileMapLayer, build_layer: TileMapLayer = null) -> void:
 	stop_running()
+	cancel_step_animation()
 	editing_locked = false
 	simulation_finished = false
 	goal_tick_count = 0
@@ -145,7 +149,7 @@ func _place_selected_block(cell: Vector2i) -> void:
 		_update_preview()
 
 func start_running() -> void:
-	if interaction_blocked or simulation_finished or not run_timer.is_stopped():
+	if is_animating or interaction_blocked or simulation_finished or not run_timer.is_stopped():
 		return
 	step()
 	if not simulation_finished:
@@ -158,7 +162,7 @@ func stop_running() -> void:
 
 
 func step() -> void:
-	if interaction_blocked or simulation_finished:
+	if is_animating or interaction_blocked or simulation_finished:
 		return
 	editing_locked = true
 	cancel_placement()
@@ -167,6 +171,9 @@ func step() -> void:
 	var blocks: Array[BlockBase] = []
 	blocks.assign(start_grid.values())
 	blocks.sort_custom(_comes_before)
+	var previous_visuals: Dictionary = {}
+	for block in blocks:
+		previous_visuals[block] = {"position": block.position, "rotation": block.rotation}
 	for block in blocks:
 		block.moved_directions.clear()
 	# Rotation must not reserve cells or mark blocks as already handled.
@@ -201,8 +208,7 @@ func step() -> void:
 				display_grid.add_child(block)
 			else:
 				add_child(block)
-	step_finished.emit(solution.duplicate())
-	_update_goal_ticks()
+	_animate_step(solution.duplicate(), previous_visuals)
 
 
 func get_step_priority(block: BlockBase) -> int:
@@ -300,14 +306,54 @@ func _process(_delta: float) -> void:
 		step()
 
 
-func _on_step_finished(data: Array[Dictionary]) -> void:
-	if display_grid == null:
+func cancel_step_animation() -> void:
+	if step_tween != null:
+		step_tween.kill()
+	is_animating = false
+
+
+func _animate_step(data: Array[Dictionary], previous_visuals: Dictionary) -> void:
+	for entry in data:
+		var block: BlockBase = entry["block"]
+		entry["data"]["rotation_before"] = previous_visuals[block]["rotation"] if previous_visuals.has(block) else block.rotation
+	if display_grid == null or step_animation_duration <= 0.0:
+		_finish_animated_step(data)
 		return
+	is_animating = true
+	step_tween = create_tween().set_parallel(true)
+	step_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	for entry in data:
 		var block: BlockBase = entry["block"]
 		var change: Dictionary = entry["data"]
-		block.position = display_grid.map_to_local(change["to"])
-		block.rotation = change["rot"]
+		var destination := display_grid.map_to_local(change["to"])
+		var final_rotation: float = change["rot"]
+		if previous_visuals.has(block):
+			# Simulation needs final rotations to calculate movement, but the
+			# renderer starts from the previous pose. Never tween simulation state.
+			block.position = previous_visuals[block]["position"]
+			block.rotation = previous_visuals[block]["rotation"]
+		else:
+			block.position = destination
+			block.rotation = final_rotation
+			var final_alpha := block.modulate.a
+			block.modulate.a = 0.0
+			step_tween.tween_property(block, "modulate:a", final_alpha, step_animation_duration)
+		step_tween.tween_property(block, "position", destination, step_animation_duration)
+		step_tween.tween_property(block, "rotation", final_rotation, step_animation_duration)
+	step_tween.chain().tween_callback(_finish_animated_step.bind(data))
+
+
+func _finish_animated_step(data: Array[Dictionary]) -> void:
+	# Restore exact end poses after interpolation (also handles duration = 0).
+	if display_grid != null:
+		for entry in data:
+			var block: BlockBase = entry["block"]
+			block.position = display_grid.map_to_local(entry["data"]["to"])
+			block.rotation = entry["data"]["rot"]
+	is_animating = false
+	_update_goal_ticks(data)
+	step_finished.emit(data)
+
 
 # Building restrictions apply only to player placement, not simulation movement.
 func can_place_at(cell: Vector2i) -> bool:
@@ -326,18 +372,34 @@ func is_inside(pos: Vector2i) -> bool:
 	return Rect2i(grid_origin, size).has_point(pos)
 
 
-func _update_goal_ticks() -> void:
-	var occupied := false
+func _update_goal_ticks(data: Array[Dictionary]) -> void:
+	var all_still := true
+	var goal_count := 0
+	var changes: Dictionary = {}
+	for entry in data:
+		changes[entry["block"]] = entry["data"]
 	if placement_grid != null and placement_grid.tile_set != null:
 		if placement_grid.tile_set.get_custom_data_layer_by_name("goal") >= 0:
-			for cell: Vector2i in start_grid:
-				var world_position := display_grid.to_global(display_grid.map_to_local(cell))
-				var goal_cell := placement_grid.local_to_map(placement_grid.to_local(world_position))
+			for goal_cell in placement_grid.get_used_cells():
 				var tile := placement_grid.get_cell_tile_data(goal_cell)
-				if tile != null and tile.get_custom_data("goal") == true:
-					occupied = true
-					break
-	goal_tick_count = goal_tick_count + 1 if occupied else 0
+				if tile == null or tile.get_custom_data("goal") != true:
+					continue
+				goal_count += 1
+				var world_position := placement_grid.to_global(placement_grid.map_to_local(goal_cell))
+				var cell := display_grid.local_to_map(display_grid.to_local(world_position))
+				var block := _get_block_at(cell)
+				if block == null or not changes.has(block):
+					all_still = false
+					continue
+				var change: Dictionary = changes[block]
+				# Arrival, cloning, pushing and rotation all interrupt the hold.
+				if change.get("spawned", false) or change["from"] != change["to"]:
+					all_still = false
+				if not block.moved_directions.is_empty():
+					all_still = false
+				if not is_equal_approx(float(change["rotation_before"]), float(change["rot"])):
+					all_still = false
+	goal_tick_count = goal_tick_count + 1 if goal_count > 0 and all_still else 0
 	if goal_tick_count >= GOAL_TICKS_REQUIRED:
 		simulation_finished = true
 		stop_running()

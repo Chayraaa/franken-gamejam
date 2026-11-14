@@ -112,6 +112,7 @@ damage = -2
 [node name="Task2" type="Node2D" parent="DialogueRoot" unique_id=1519802849]
 script = ExtResource("2_3bxp4")
 task_text = "Dialog 2"
+level_number = 2
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task2" unique_id=1608657554]
 script = ExtResource("3_i4e3j")

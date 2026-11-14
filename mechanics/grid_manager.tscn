@@ -28,5 +28,3 @@ size = Vector2i(20, 20)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=738058262]
 tile_set = SubResource("TileSet_w75uu")
-
-[connection signal="step_finished" from="." to="." method="_on_step_finished"]

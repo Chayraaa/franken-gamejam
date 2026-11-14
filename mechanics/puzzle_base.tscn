@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bwemalnc3tqsf" path="res://levels/level2.tscn" id="10_4jh4i"]
 [ext_resource type="PackedScene" uid="uid://05m3ys5fneq" path="res://levels/level1.tscn" id="10_7po70"]
 [ext_resource type="PackedScene" uid="uid://d35xtlvadeq2q" path="res://levels/sandbox.tscn" id="11_i2vme"]
+[ext_resource type="PackedScene" uid="uid://bajm4d2ttwt2e" path="res://levels/level3.tscn" id="12_7foxy"]
+[ext_resource type="PackedScene" uid="uid://bh2d0kyebnqk7" path="res://levels/level4.tscn" id="12_fxgs3"]
 [ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6egpn"]
@@ -226,9 +228,12 @@ unique_name_in_owner = true
 
 [node name="Level1" parent="Levels" unique_id=1527709230 instance=ExtResource("10_7po70")]
 
-[node name="Level2" parent="Levels" unique_id=1077325593 instance=ExtResource("10_4jh4i")]
+[node name="Level2" parent="Levels" unique_id=1768305442 instance=ExtResource("10_4jh4i")]
+
+[node name="Level3" parent="Levels" unique_id=517215957 instance=ExtResource("12_7foxy")]
+
+[node name="Level4" parent="Levels" unique_id=1077325593 instance=ExtResource("12_fxgs3")]
+position = Vector2(178.3349, 112.07357)
 
 [node name="Sandbox" parent="Levels" unique_id=1568218771 instance=ExtResource("11_i2vme")]
 visible = false
-
-[connection signal="step_finished" from="GridManager" to="GridManager" method="_on_step_finished"]
