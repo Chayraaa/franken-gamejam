@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://cg0fdod4ylnst"]
 
-[ext_resource type="Texture2D" uid="uid://de6cbrse4ikg8" path="res://gamemap/work_gamemap.png" id="1_gopxi"]
 [ext_resource type="PackedScene" uid="uid://dqr37qqt035pi" path="res://gamemap/interactable_2d.tscn" id="2_k42st"]
 
 [node name="Gamemap" type="Node2D" unique_id=1799448745]
 position = Vector2(119, 111)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=101058056]
-position = Vector2(371, 292)
-scale = Vector2(2.525, 2.525)
-texture = ExtResource("1_gopxi")
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1919166920]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=2000598427]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Interactable2D" parent="." unique_id=277553271 instance=ExtResource("2_k42st")]
 position = Vector2(473, 217.00002)
