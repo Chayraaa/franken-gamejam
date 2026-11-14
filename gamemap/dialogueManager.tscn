@@ -1,44 +1,122 @@
 [gd_scene format=3 uid="uid://cpuqtvn7n2k54"]
 
+[ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="1_3orro"]
+[ext_resource type="Script" uid="uid://dkh34l2sna4eq" path="res://gamemap/dialogue_manager.gd" id="1_7i0iu"]
+[ext_resource type="Script" uid="uid://bdfysxcp2si34" path="res://gamemap/dialogue_tree.gd" id="2_3bxp4"]
+[ext_resource type="Script" uid="uid://ui7s07ibcoc0" path="res://gamemap/effect_node.gd" id="3_i4e3j"]
+
 [node name="Dialogues" type="Node2D" unique_id=1854594120]
+script = ExtResource("1_7i0iu")
 
-[node name="DialogueManager" type="CanvasLayer" parent="." unique_id=1199525203]
+[node name="DialogueUI" type="CanvasLayer" parent="." unique_id=1199525203]
 
-[node name="ColorRect" type="ColorRect" parent="DialogueManager" unique_id=234852134]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -239.25
-offset_top = -338.01324
-offset_right = 240.75
-offset_bottom = 336.98676
+[node name="Control" type="Control" parent="DialogueUI" unique_id=1822292517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_3orro")
 
-[node name="task_title" type="RichTextLabel" parent="DialogueManager/ColorRect" unique_id=546703932]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 0
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 265.0
-offset_bottom = 46.0
-theme_override_font_sizes/normal_font_size = 24
-text = "Task Title"
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueUI/Control" unique_id=215857930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="DialogueManager/ColorRect" unique_id=747856845]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 0
-offset_left = 17.25
-offset_top = 50.0
-offset_right = 467.25
-offset_bottom = 461.01324
-theme_override_font_sizes/normal_font_size = 17
-text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+[node name="Control2" type="Control" parent="DialogueUI/Control/VBoxContainer" unique_id=1280029587]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="DialogueUI/Control/VBoxContainer" unique_id=1192112815]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+
+[node name="Control2" type="Control" parent="DialogueUI/Control/VBoxContainer/HBoxContainer2" unique_id=961710855]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TaskTextBody" type="RichTextLabel" parent="DialogueUI/Control/VBoxContainer/HBoxContainer2" unique_id=1578652663]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lorem Ispum Bla und Bla und Bla"
+
+[node name="Control" type="Control" parent="DialogueUI/Control/VBoxContainer/HBoxContainer2" unique_id=2142675588]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="DialogueUI/Control/VBoxContainer" unique_id=1212031750]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueUI/Control/VBoxContainer" unique_id=1808125580]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Control2" type="Control" parent="DialogueUI/Control/VBoxContainer/HBoxContainer" unique_id=1471631990]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TaskAcceptButton" type="Button" parent="DialogueUI/Control/VBoxContainer/HBoxContainer" unique_id=1929107738]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Accept"
+
+[node name="Control3" type="Control" parent="DialogueUI/Control/VBoxContainer/HBoxContainer" unique_id=2115657013]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="TaskDeclineButton" type="Button" parent="DialogueUI/Control/VBoxContainer/HBoxContainer" unique_id=229504672]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Decline"
+
+[node name="Control" type="Control" parent="DialogueUI/Control/VBoxContainer/HBoxContainer" unique_id=706770437]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control3" type="Control" parent="DialogueUI/Control/VBoxContainer" unique_id=1145030939]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogueRoot" type="Node2D" parent="." unique_id=620122008]
+unique_name_in_owner = true
+
+[node name="Task1" type="Node2D" parent="DialogueRoot" unique_id=530026809]
+script = ExtResource("2_3bxp4")
+task_text = "Hallo das ist ein test"
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task1" unique_id=1845707454]
+script = ExtResource("3_i4e3j")
+damage = 4
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task1" unique_id=325947341]
+script = ExtResource("3_i4e3j")
+damage = -2
+
+[node name="Task2" type="Node2D" parent="DialogueRoot" unique_id=1519802849]
+script = ExtResource("2_3bxp4")
+task_text = "Dialog 2"
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task2" unique_id=1608657554]
+script = ExtResource("3_i4e3j")
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task2" unique_id=1985827970]
+script = ExtResource("3_i4e3j")
+
+[connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskAcceptButton" to="." method="_on_task_accept_button_pressed"]
+[connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskDeclineButton" to="." method="_on_task_decline_button_pressed"]
