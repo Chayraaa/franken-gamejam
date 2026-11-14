@@ -1,30 +1,31 @@
-[gd_scene format=4 uid="uid://d35xtlvadeq2q"]
+[gd_scene format=4 uid="uid://05m3ys5fneq"]
 
-[ext_resource type="Script" uid="uid://xkdar73umc3d" path="res://levels/level.gd" id="1_8hd6v"]
-[ext_resource type="PackedScene" uid="uid://dcqe7peb48q8d" path="res://mechanics/blocks/box/box.tscn" id="2_045es"]
-[ext_resource type="PackedScene" uid="uid://dk3uow3i88qod" path="res://mechanics/blocks/mover/mover.tscn" id="3_omn1t"]
-[ext_resource type="PackedScene" uid="uid://dlf7uw2tuf3h8" path="res://mechanics/blocks/pusher/pusher.tscn" id="4_lf3p4"]
-[ext_resource type="PackedScene" uid="uid://ncavhr1lu42k" path="res://mechanics/blocks/rotator/rotator.tscn" id="5_yydhl"]
-[ext_resource type="PackedScene" uid="uid://du5gmm7m65trm" path="res://mechanics/blocks/cloner/cloner.tscn" id="6_bekh1"]
-[ext_resource type="PackedScene" uid="uid://bfn1j076vlvhh" path="res://mechanics/blocks/wall/wall.tscn" id="7_8bcou"]
-[ext_resource type="Texture2D" uid="uid://dyf5orh1rxnww" path="res://mechanics/tiles/tiles-tileset.png" id="8_045es"]
-[ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="9_omn1t"]
+[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
+[ext_resource type="Script" uid="uid://xkdar73umc3d" path="res://levels/level.gd" id="1_ifyw6"]
+[ext_resource type="PackedScene" uid="uid://dk3uow3i88qod" path="res://mechanics/blocks/mover/mover.tscn" id="2_cdo1f"]
+[ext_resource type="PackedScene" uid="uid://dlf7uw2tuf3h8" path="res://mechanics/blocks/pusher/pusher.tscn" id="3_52oqb"]
+[ext_resource type="PackedScene" uid="uid://ncavhr1lu42k" path="res://mechanics/blocks/rotator/rotator.tscn" id="4_bboja"]
+[ext_resource type="PackedScene" uid="uid://du5gmm7m65trm" path="res://mechanics/blocks/cloner/cloner.tscn" id="5_4gkyq"]
+[ext_resource type="PackedScene" uid="uid://dcqe7peb48q8d" path="res://mechanics/blocks/box/box.tscn" id="6_s17h7"]
+[ext_resource type="PackedScene" uid="uid://bfn1j076vlvhh" path="res://mechanics/blocks/wall/wall.tscn" id="7_4a2m7"]
+[ext_resource type="Texture2D" uid="uid://dyf5orh1rxnww" path="res://mechanics/tiles/tiles-tileset.png" id="8_s6xxf"]
+[ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="9_k47ef"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_f7u7y"]
 resource_name = "Blocks"
-scenes/1/scene = ExtResource("2_045es")
-scenes/2/scene = ExtResource("3_omn1t")
-scenes/3/scene = ExtResource("4_lf3p4")
-scenes/4/scene = ExtResource("5_yydhl")
-scenes/5/scene = ExtResource("6_bekh1")
-scenes/6/scene = ExtResource("7_8bcou")
+scenes/1/scene = ExtResource("6_s17h7")
+scenes/2/scene = ExtResource("2_cdo1f")
+scenes/3/scene = ExtResource("3_52oqb")
+scenes/4/scene = ExtResource("4_bboja")
+scenes/5/scene = ExtResource("5_4gkyq")
+scenes/6/scene = ExtResource("7_4a2m7")
 
 [sub_resource type="TileSet" id="TileSet_jq2cn"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetScenesCollectionSource_f7u7y")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omn1t"]
-texture = ExtResource("8_045es")
+texture = ExtResource("8_s6xxf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -42,35 +43,24 @@ sources/6 = SubResource("TileSetAtlasSource_omn1t")
 tile_proxies/coords_level = [[3, Vector2i(0, 0)], [6, Vector2i(0, 0)], [4, Vector2i(0, 0)], [6, Vector2i(1, 0)], [5, Vector2i(0, 0)], [6, Vector2i(2, 0)]]
 
 [node name="Level1" type="Node2D" unique_id=1077325593]
-script = ExtResource("1_8hd6v")
+script = ExtResource("1_ifyw6")
 building_blocks = Array[Dictionary]([{
-"block": ExtResource("3_omn1t"),
-"count": 3
-}, {
-"block": ExtResource("4_lf3p4"),
-"count": 3
-}, {
-"block": ExtResource("5_yydhl"),
-"count": 3
-}, {
-"block": ExtResource("6_bekh1"),
-"count": 3
-}, {
-"block": ExtResource("2_045es"),
+"block": ExtResource("6_s17h7"),
 "count": 3
 }])
-display_text = Array[String](["Das ist der test", "Aus dem wild wild west"])
+display_text = Array[String](["Willkommen zur Einleitung über die Nutzung von Blöcken zur Konrolle von Brennstäben", "Fangen wir simpel an. In Ihrem Inventar finden Sie Brennstab Boxen [img]res://mechanics/blocks/box/objective.png[/img].", "Zum Abschließen einer Aufgabe müssen Sie durch eine solche Box oder andere Blöcke das Flaggenfeld [img]res://mechanics/tiles/grid_goal.png[/img] für 3 Ticks abdecken.", "Was sind Ticks fragen Sie sich?", "Diese Simulation ist rundenbasiert. Das bedeutet jede Runde handelt ein Block einmal. Um eine Runde vortzuschreiten, nutzen Sie den \"Step\" Knopf.", "Um die Runden automatisch laufen zu lassen, nutzen Sie den \"Run\" Knopf.", "Nutzen Sie dieses Level um sich mit der Steuerung der Simulation vertraut zu machen.", "Zum Abschließen des Levels, bewegen Sie eine Box [img]res://mechanics/blocks/box/objective.png[/img] auf das Flaggenfeld [img]res://mechanics/tiles/grid_goal.png[/img]."])
 
 [node name="CellLayer" type="TileMapLayer" parent="." unique_id=1184468024]
-tile_map_data = PackedByteArray("AAAMAAAAAAAAAAAABgAMAAEAAAAAAAAABgAMAAIAAAAAAAAABgAMAAMAAAAAAAAABgAMAAQAAAAAAAAABgAMAAUAAAAAAAAABgAMAAYAAAAAAAAABgAMAAcAAAAAAAAABgAMAAgAAAAAAAAABgAMAAkAAAAAAAAABgALAAkAAAAAAAAABgAKAAkAAAAAAAAABgAJAAkAAAAAAAAABgAIAAkAAAAAAAAABgAHAAkAAAAAAAAABgAGAAkAAAAAAAAABgAFAAkAAAAAAAAABgAEAAkAAAAAAAAABgADAAkAAAAAAAAABgACAAkAAAAAAAAABgABAAkAAAAAAAAABgAAAAkAAAAAAAAABgAAAAgAAAAAAAAABgAAAAcAAAAAAAAABgAAAAYAAAAAAAAABgAAAAUAAAAAAAAABgAAAAQAAAAAAAAABgAAAAMAAAAAAAAABgAAAAIAAAAAAAAABgAAAAEAAAAAAAAABgAAAAAAAAAAAAAABgABAAAAAAAAAAAABgACAAAAAAAAAAAABgADAAAAAAAAAAAABgAEAAAAAAAAAAAABgAFAAAAAAAAAAAABgAGAAAAAAAAAAAABgAHAAAAAAAAAAAABgAIAAAAAAAAAAAABgAJAAAAAAAAAAAABgAKAAAAAAAAAAAABgALAAAAAAAAAAAABgA=")
+tile_map_data = PackedByteArray("AAAMAAAAAAAAAAAABgAMAAEAAAAAAAAABgAMAAIAAAAAAAAABgAMAAMAAAAAAAAABgAMAAQAAAAAAAAABgAMAAUAAAAAAAAABgAMAAYAAAAAAAAABgAMAAcAAAAAAAAABgAMAAgAAAAAAAAABgAMAAkAAAAAAAAABgALAAkAAAAAAAAABgAKAAkAAAAAAAAABgAJAAkAAAAAAAAABgAIAAkAAAAAAAAABgAHAAkAAAAAAAAABgAGAAkAAAAAAAAABgAFAAkAAAAAAAAABgAEAAkAAAAAAAAABgADAAkAAAAAAAAABgACAAkAAAAAAAAABgABAAkAAAAAAAAABgAAAAkAAAAAAAAABgAAAAgAAAAAAAAABgAAAAcAAAAAAAAABgAAAAYAAAAAAAAABgAAAAUAAAAAAAAABgAAAAQAAAAAAAAABgAAAAMAAAAAAAAABgAAAAIAAAAAAAAABgAAAAEAAAAAAAAABgAAAAAAAAAAAAAABgABAAAAAAAAAAAABgACAAAAAAAAAAAABgADAAAAAAAAAAAABgAEAAAAAAAAAAAABgAFAAAAAAAAAAAABgAGAAAAAAAAAAAABgAHAAAAAAAAAAAABgAIAAAAAAAAAAAABgAJAAAAAAAAAAAABgAKAAAAAAAAAAAABgALAAAAAAAAAAAABgAEAAUAAAAAAAAAAwA=")
 tile_set = SubResource("TileSet_jq2cn")
 
 [node name="GridLayer" type="TileMapLayer" parent="." unique_id=1670379394]
 z_index = -1
-tile_map_data = PackedByteArray("AAABAAQABgACAAAAAAACAAQABgACAAAAAAADAAQABgACAAAAAAADAAMABgACAAAAAAADAAIABgACAAAAAAADAAEABgACAAAAAAABAAEABgACAAAAAAABAAIABgACAAAAAAABAAMABgACAAAAAAACAAMABgACAAAAAAACAAIABgACAAAAAAACAAEABgACAAAAAAAEAAEABgACAAAAAAAEAAIABgACAAAAAAAEAAMABgACAAAAAAAEAAQABgACAAAAAAAJAAIABgABAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAAKAAgABgAAAAAAAAAJAAgABgAAAAAAAAAJAAcABgAAAAAAAAAIAAcABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAGAAgABgAAAAAAAAAFAAgABgAAAAAAAAAEAAgABgAAAAAAAAADAAcABgAAAAAAAAACAAgABgAAAAAAAAABAAgABgAAAAAAAAADAAgABgAAAAAAAAAIAAgABgAAAAAAAAAGAAQABgAAAAAAAAAGAAMABgAAAAAAAAAGAAIABgAAAAAAAAAGAAEABgAAAAAAAAAFAAEABgACAAAAAAAFAAIABgACAAAAAAAFAAMABgACAAAAAAAFAAQABgACAAAAAAAFAAUABgACAAAAAAAEAAUABgACAAAAAAADAAUABgACAAAAAAACAAUABgACAAAAAAABAAUABgACAAAAAAABAAcABgAAAAAAAAABAAYABgAAAAAAAAACAAYABgAAAAAAAAACAAcABgAAAAAAAAADAAYABgAAAAAAAAAEAAYABgAAAAAAAAAEAAcABgAAAAAAAAAFAAcABgAAAAAAAAAFAAYABgAAAAAAAAAGAAYABgAAAAAAAAAGAAUABgAAAAAAAAAHAAUABgAAAAAAAAAHAAQABgAAAAAAAAAHAAMABgAAAAAAAAAHAAIABgAAAAAAAAAHAAEABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAHAAYABgAAAAAAAAAJAAYABgAAAAAAAAAJAAUABgAAAAAAAAAJAAQABgAAAAAAAAAJAAMABgAAAAAAAAAKAAMABgAAAAAAAAAKAAIABgAAAAAAAAAKAAEABgAAAAAAAAAJAAEABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAGAAcABgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAQABgACAAAAAAACAAQABgACAAAAAAADAAQABgACAAAAAAADAAMABgACAAAAAAADAAIABgACAAAAAAADAAEABgACAAAAAAABAAEABgACAAAAAAABAAIABgACAAAAAAABAAMABgACAAAAAAACAAMABgACAAAAAAACAAIABgACAAAAAAACAAEABgACAAAAAAAEAAEABgACAAAAAAAEAAIABgACAAAAAAAEAAMABgACAAAAAAAEAAQABgACAAAAAAAJAAIABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAAKAAgABgAAAAAAAAAJAAgABgAAAAAAAAAJAAcABgAAAAAAAAAIAAcABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAGAAgABgAAAAAAAAAFAAgABgACAAAAAAAEAAgABgACAAAAAAADAAcABgACAAAAAAACAAgABgACAAAAAAABAAgABgACAAAAAAADAAgABgACAAAAAAAIAAgABgAAAAAAAAAGAAQABgAAAAAAAAAGAAMABgAAAAAAAAAGAAIABgAAAAAAAAAGAAEABgAAAAAAAAAFAAEABgACAAAAAAAFAAIABgACAAAAAAAFAAMABgACAAAAAAAFAAQABgACAAAAAAAFAAUABgACAAAAAAAEAAUABgACAAAAAAADAAUABgACAAAAAAACAAUABgACAAAAAAABAAUABgACAAAAAAABAAcABgACAAAAAAABAAYABgACAAAAAAACAAYABgACAAAAAAACAAcABgACAAAAAAADAAYABgACAAAAAAAEAAYABgACAAAAAAAEAAcABgACAAAAAAAFAAcABgACAAAAAAAFAAYABgACAAAAAAAGAAYABgAAAAAAAAAGAAUABgABAAAAAAAHAAUABgAAAAAAAAAHAAQABgAAAAAAAAAHAAMABgAAAAAAAAAHAAIABgAAAAAAAAAHAAEABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAHAAYABgAAAAAAAAAJAAYABgAAAAAAAAAJAAUABgAAAAAAAAAJAAQABgAAAAAAAAAJAAMABgAAAAAAAAAKAAMABgAAAAAAAAAKAAIABgAAAAAAAAAKAAEABgAAAAAAAAAJAAEABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAGAAcABgAAAAAAAAA=")
 tile_set = SubResource("TileSet_8hd6v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1320835064]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=427274289]
 layout_mode = 3
@@ -81,7 +71,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("9_omn1t")
+theme = ExtResource("9_k47ef")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=962592209]
 layout_mode = 1
@@ -91,10 +81,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextDisplay" type="RichTextLabel" parent="CanvasLayer/Control/CenterContainer" unique_id=247785168]
+[node name="DialogBox" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=1300118514]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextDisplay" type="RichTextLabel" parent="CanvasLayer/Control/CenterContainer/DialogBox" unique_id=247785168]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
+bbcode_enabled = true
 text = "Das ist random tutorial text"
 fit_content = true
 scroll_active = false
+
+[node name="SkipButton" type="Button" parent="CanvasLayer/Control/CenterContainer/DialogBox" unique_id=411858515]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+text = "Skip"
+
+[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/TextDisplay" instance=ExtResource("99_shadow")]
+
+[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/SkipButton" instance=ExtResource("99_shadow")]

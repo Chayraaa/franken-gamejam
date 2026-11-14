@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://chlat0lurrywx"]
 
+[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 [ext_resource type="Script" uid="uid://kg7hrtvx6g51" path="res://mechanics/level_manager.gd" id="1_dnp8w"]
 [ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="2_7po70"]
+[ext_resource type="Texture2D" uid="uid://2p7vps44ndxp" path="res://ui/FAFO_LevelBG..png" id="2_o86sm"]
 [ext_resource type="Script" uid="uid://50k1cj3x7ojw" path="res://mechanics/grid_manager.gd" id="3_i2vme"]
 [ext_resource type="PackedScene" uid="uid://dcqe7peb48q8d" path="res://mechanics/blocks/box/box.tscn" id="4_4jh4i"]
 [ext_resource type="PackedScene" uid="uid://dk3uow3i88qod" path="res://mechanics/blocks/mover/mover.tscn" id="5_o86sm"]
@@ -9,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://ncavhr1lu42k" path="res://mechanics/blocks/rotator/rotator.tscn" id="7_7foxy"]
 [ext_resource type="PackedScene" uid="uid://du5gmm7m65trm" path="res://mechanics/blocks/cloner/cloner.tscn" id="8_fxgs3"]
 [ext_resource type="PackedScene" uid="uid://bfn1j076vlvhh" path="res://mechanics/blocks/wall/wall.tscn" id="9_1giwo"]
-[ext_resource type="PackedScene" uid="uid://d35xtlvadeq2q" path="res://levels/level1.tscn" id="10_7po70"]
+[ext_resource type="PackedScene" uid="uid://bwemalnc3tqsf" path="res://levels/level2.tscn" id="10_4jh4i"]
+[ext_resource type="PackedScene" uid="uid://05m3ys5fneq" path="res://levels/level1.tscn" id="10_7po70"]
+[ext_resource type="PackedScene" uid="uid://d35xtlvadeq2q" path="res://levels/sandbox.tscn" id="11_i2vme"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6egpn"]
 resource_name = "Blocks"
@@ -30,6 +34,19 @@ script = ExtResource("1_dnp8w")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1978050073]
 anchor_mode = 0
 zoom = Vector2(2, 2)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1988616878]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer2" unique_id=474747388]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_o86sm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1714668591]
 
@@ -82,6 +99,12 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Reset"
+
+[node name="DialogButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1724207634]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Instructions"
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=892762648]
 layout_mode = 2
@@ -186,7 +209,24 @@ tile_set = SubResource("TileSet_w75uu")
 [node name="Levels" type="Node2D" parent="." unique_id=1038130198]
 unique_name_in_owner = true
 
-[node name="Level1" parent="Levels" unique_id=1077325593 instance=ExtResource("10_7po70")]
+[node name="Level1" parent="Levels" unique_id=1527709230 instance=ExtResource("10_7po70")]
+
+[node name="Level2" parent="Levels" unique_id=1077325593 instance=ExtResource("10_4jh4i")]
+
+[node name="Sandbox" parent="Levels" unique_id=1568218771 instance=ExtResource("11_i2vme")]
 visible = false
+
+
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/StepButton" instance=ExtResource("99_shadow")]
+
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/RunButton" instance=ExtResource("99_shadow")]
+
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/ResetButton" instance=ExtResource("99_shadow")]
+
+[node name="DropShadow" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/DialogButton" instance=ExtResource("99_shadow")]
+
+[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/CompletionResetButton" instance=ExtResource("99_shadow")]
+
+[node name="DropShadow" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons/ContinueButton" instance=ExtResource("99_shadow")]
 
 [connection signal="step_finished" from="GridManager" to="GridManager" method="_on_step_finished"]

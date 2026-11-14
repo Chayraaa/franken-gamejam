@@ -1,11 +1,50 @@
 [gd_scene format=3 uid="uid://do7xigjprafwc"]
 
+[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
+[ext_resource type="FontFile" uid="uid://cc0oy634jh2wh" path="res://ui/PixelifySans-VariableFont_wght.ttf" id="1_03vy6"]
 [ext_resource type="Script" uid="uid://xfogkg4uht3t" path="res://ui/button_puzzle.gd" id="1_8c03w"]
 
+[sub_resource type="Theme" id="Theme_csppu"]
+Label/colors/font_color = Color(0.8745098, 0.24313726, 0.13725491, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_03vy6")
+
 [node name="Button" type="Button" unique_id=2013946235]
+custom_minimum_size = Vector2(0, 80)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
+theme = SubResource("Theme_csppu")
 script = ExtResource("1_8c03w")
+
+[node name="Content" type="HBoxContainer" parent="." unique_id=503752668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Content" unique_id=435308139]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="Content" unique_id=645638435]
+layout_mode = 2
+vertical_alignment = 1
+
+
+[node name="DropShadow" parent="." instance=ExtResource("99_shadow")]
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -15,10 +15,12 @@ var initial_levels: Array[PackedScene] = []
 var goal_tick_count: int = 0
 var goal_title_tween: Tween
 var completion_confirmed: bool = false
+var resume_run_after_dialog: bool = false
 
 @onready var step_button: Button = %StepButton
 @onready var run_button: Button = %RunButton
 @onready var reset_button: Button = %ResetButton
+@onready var dialog_button: Button = %DialogButton
 @onready var goal_tick_title: Label = %GoalTickTitle
 @onready var completion_screen: ColorRect = %CompletionScreen
 @onready var completion_reset_button: Button = %CompletionResetButton
@@ -39,9 +41,10 @@ func _ready() -> void:
 	step_button.pressed.connect(grid_manager.step)
 	run_button.pressed.connect(grid_manager.start_running)
 	reset_button.pressed.connect(reset_level)
+	dialog_button.pressed.connect(show_instructions)
 	completion_reset_button.pressed.connect(reset_level)
 	continue_button.pressed.connect(_on_continue_pressed)
-	for button in [step_button, run_button, reset_button, completion_reset_button, continue_button]:
+	for button in [step_button, run_button, reset_button, dialog_button, completion_reset_button, continue_button]:
 		button.focus_mode = Control.FOCUS_NONE
 	get_viewport().size_changed.connect(_fit_camera)
 	load_level()
@@ -53,6 +56,7 @@ func _process(_delta: float) -> void:
 	step_button.disabled = running or grid_manager.simulation_finished or grid_manager.interaction_blocked
 	run_button.disabled = running or grid_manager.simulation_finished or grid_manager.interaction_blocked
 	reset_button.disabled = grid_manager.interaction_blocked
+	dialog_button.disabled = grid_manager.interaction_blocked or grid_manager.simulation_finished
 
 func reset_level() -> void:
 	grid_manager.stop_running()
@@ -67,12 +71,13 @@ func reset_level() -> void:
 	var restored := initial_levels[index].instantiate() as Level
 	levels.add_child(restored)
 	levels.move_child(restored, index)
-	load_level()
+	load_level(false)
 
 
-func load_level() -> void:
+func load_level(show_dialog: bool = true) -> void:
 	completion_screen.hide()
 	completion_confirmed = false
+	resume_run_after_dialog = false
 	if current_level > levels.get_child_count():
 		return
 	var to_load: Level = levels.get_child(current_level - 1)
@@ -91,7 +96,8 @@ func load_level() -> void:
 		level.hide_dialog()
 	if not to_load.dialog_finished.is_connected(_on_dialog_finished):
 		to_load.dialog_finished.connect(_on_dialog_finished)
-	to_load.show_text()
+	if show_dialog:
+		to_load.show_text()
 	grid_manager.interaction_blocked = to_load.dialog_active
 	_fit_camera()
 
@@ -165,6 +171,9 @@ func _on_continue_pressed() -> void:
 	for level: Level in levels.get_children():
 		level.visible = false
 	
+	# temp:
+	current_level += 1
+	load_level(true)
 	level_finished.emit()
 
 
@@ -176,8 +185,27 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var level := levels.get_child(current_level - 1) as Level
-			level.advance_dialog()
+			if level.skip_button.get_global_rect().has_point(level.skip_button.get_global_mouse_position()):
+				level.skip_dialog()
+			else:
+				level.advance_dialog()
 
 
 func _on_dialog_finished() -> void:
 	grid_manager.interaction_blocked = false
+	if resume_run_after_dialog:
+		resume_run_after_dialog = false
+		grid_manager.run_timer.start()
+
+
+func show_instructions() -> void:
+	if grid_manager.interaction_blocked or grid_manager.simulation_finished:
+		return
+	var level := levels.get_child(current_level - 1) as Level
+	if level.display_text.is_empty():
+		return
+	resume_run_after_dialog = not grid_manager.run_timer.is_stopped()
+	grid_manager.stop_running()
+	grid_manager.cancel_placement()
+	level.show_text()
+	grid_manager.interaction_blocked = level.dialog_active

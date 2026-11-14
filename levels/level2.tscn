@@ -1,0 +1,109 @@
+[gd_scene format=4 uid="uid://bwemalnc3tqsf"]
+
+[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
+[ext_resource type="Script" uid="uid://xkdar73umc3d" path="res://levels/level.gd" id="1_55gdq"]
+[ext_resource type="PackedScene" uid="uid://dcqe7peb48q8d" path="res://mechanics/blocks/box/box.tscn" id="2_crte6"]
+[ext_resource type="PackedScene" uid="uid://dk3uow3i88qod" path="res://mechanics/blocks/mover/mover.tscn" id="3_hq01p"]
+[ext_resource type="PackedScene" uid="uid://dlf7uw2tuf3h8" path="res://mechanics/blocks/pusher/pusher.tscn" id="4_fjysh"]
+[ext_resource type="PackedScene" uid="uid://ncavhr1lu42k" path="res://mechanics/blocks/rotator/rotator.tscn" id="5_bcewn"]
+[ext_resource type="PackedScene" uid="uid://du5gmm7m65trm" path="res://mechanics/blocks/cloner/cloner.tscn" id="6_6mfmt"]
+[ext_resource type="PackedScene" uid="uid://bfn1j076vlvhh" path="res://mechanics/blocks/wall/wall.tscn" id="7_qegch"]
+[ext_resource type="Texture2D" uid="uid://dyf5orh1rxnww" path="res://mechanics/tiles/tiles-tileset.png" id="8_jai45"]
+[ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="9_jj0ry"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_f7u7y"]
+resource_name = "Blocks"
+scenes/1/scene = ExtResource("2_crte6")
+scenes/2/scene = ExtResource("3_hq01p")
+scenes/3/scene = ExtResource("4_fjysh")
+scenes/4/scene = ExtResource("5_bcewn")
+scenes/5/scene = ExtResource("6_6mfmt")
+scenes/6/scene = ExtResource("7_qegch")
+
+[sub_resource type="TileSet" id="TileSet_jq2cn"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_f7u7y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omn1t"]
+texture = ExtResource("8_jai45")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_1 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_8hd6v"]
+tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "buildable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "goal"
+custom_data_layer_1/type = 1
+sources/6 = SubResource("TileSetAtlasSource_omn1t")
+tile_proxies/coords_level = [[3, Vector2i(0, 0)], [6, Vector2i(0, 0)], [4, Vector2i(0, 0)], [6, Vector2i(1, 0)], [5, Vector2i(0, 0)], [6, Vector2i(2, 0)]]
+
+[node name="Level2" type="Node2D" unique_id=1077325593]
+script = ExtResource("1_55gdq")
+building_blocks = Array[Dictionary]([{
+"block": ExtResource("4_fjysh"),
+"count": 3
+}, {
+"block": ExtResource("2_crte6"),
+"count": 1
+}])
+display_text = Array[String](["In diesem Level lernen sie den \"Pusher\" [img]res://mechanics/blocks/pusher/push.png[/img] kennen.", "Wie Sie vielleicht im letzten Level schon festgestellt haben, schiebt der Pusher [img]res://mechanics/blocks/pusher/push.png[/img] den Block vor sich von sich weg.", "Dabei ist ihm egal wie viele Blöcke er schieben muss, solange es Platz zum schieben gibt.", "In diesem Puzzle müssen Sie beweisen, dass sie mit den Eigenschaften des Pushers [img]res://mechanics/blocks/pusher/push.png[/img] vertraut sind und diesen Erfolgreich einsetzen können.", "Ein kleiner Tipp zum Abschluss: Sie können mit \"R\" Blöcke vor dem Setzen rotieren."])
+
+[node name="CellLayer" type="TileMapLayer" parent="." unique_id=1184468024]
+tile_map_data = PackedByteArray("AAAMAAAAAAAAAAAABgAMAAEAAAAAAAAABgAMAAIAAAAAAAAABgAMAAMAAAAAAAAABgAMAAQAAAAAAAAABgAMAAUAAAAAAAAABgAMAAYAAAAAAAAABgAMAAcAAAAAAAAABgAMAAgAAAAAAAAABgAMAAkAAAAAAAAABgALAAkAAAAAAAAABgAKAAkAAAAAAAAABgAJAAkAAAAAAAAABgAIAAkAAAAAAAAABgAHAAkAAAAAAAAABgAGAAkAAAAAAAAABgAFAAkAAAAAAAAABgAEAAkAAAAAAAAABgADAAkAAAAAAAAABgACAAkAAAAAAAAABgABAAkAAAAAAAAABgAAAAkAAAAAAAAABgAAAAgAAAAAAAAABgAAAAcAAAAAAAAABgAAAAYAAAAAAAAABgAAAAUAAAAAAAAABgAAAAQAAAAAAAAABgAAAAMAAAAAAAAABgAAAAIAAAAAAAAABgAAAAEAAAAAAAAABgAAAAAAAAAAAAAABgABAAAAAAAAAAAABgACAAAAAAAAAAAABgADAAAAAAAAAAAABgAEAAAAAAAAAAAABgAFAAAAAAAAAAAABgAGAAAAAAAAAAAABgAHAAAAAAAAAAAABgAIAAAAAAAAAAAABgAJAAAAAAAAAAAABgAKAAAAAAAAAAAABgALAAAAAAAAAAAABgA=")
+tile_set = SubResource("TileSet_jq2cn")
+
+[node name="GridLayer" type="TileMapLayer" parent="." unique_id=1670379394]
+z_index = -1
+tile_map_data = PackedByteArray("AAABAAQABgAAAAAAAAACAAQABgAAAAAAAAADAAQABgAAAAAAAAADAAMABgAAAAAAAAADAAIABgAAAAAAAAADAAEABgAAAAAAAAABAAEABgAAAAAAAAABAAIABgAAAAAAAAABAAMABgAAAAAAAAACAAMABgAAAAAAAAACAAIABgAAAAAAAAACAAEABgAAAAAAAAAEAAEABgAAAAAAAAAEAAIABgACAAAAAAAEAAMABgACAAAAAAAEAAQABgACAAAAAAAJAAIABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAAKAAgABgAAAAAAAAAJAAgABgAAAAAAAAAJAAcABgAAAAAAAAAIAAcABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAFAAgABgAAAAAAAAAEAAgABgAAAAAAAAADAAcABgAAAAAAAAACAAgABgAAAAAAAAABAAgABgAAAAAAAAADAAgABgAAAAAAAAAIAAgABgAAAAAAAAAGAAQABgACAAAAAAAGAAMABgACAAAAAAAGAAIABgACAAAAAAAGAAEABgAAAAAAAAAFAAEABgAAAAAAAAAFAAIABgACAAAAAAAFAAMABgACAAAAAAAFAAQABgACAAAAAAAFAAUABgAAAAAAAAAEAAUABgAAAAAAAAADAAUABgAAAAAAAAACAAUABgAAAAAAAAABAAUABgAAAAAAAAABAAcABgAAAAAAAAABAAYABgAAAAAAAAACAAYABgAAAAAAAAACAAcABgAAAAAAAAADAAYABgAAAAAAAAAEAAYABgAAAAAAAAAEAAcABgAAAAAAAAAFAAcABgAAAAAAAAAFAAYABgAAAAAAAAAGAAYABgAAAAAAAAAGAAUABgAAAAAAAAAHAAUABgAAAAAAAAAHAAQABgACAAAAAAAHAAMABgACAAAAAAAHAAIABgACAAAAAAAHAAEABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgACAAAAAAAIAAMABgACAAAAAAAIAAQABgACAAAAAAAIAAYABgAAAAAAAAAHAAYABgAAAAAAAAAJAAYABgAAAAAAAAAJAAMABgAAAAAAAAAKAAMABgAAAAAAAAAKAAIABgAAAAAAAAAKAAEABgAAAAAAAAAJAAEABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAGAAcABgABAAAAAAAIAAUABgAAAAAAAAAJAAUABgAAAAAAAAAJAAQABgAAAAAAAAAGAAgABgAAAAAAAAA=")
+tile_set = SubResource("TileSet_8hd6v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1320835064]
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=427274289]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_jj0ry")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=962592209]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogBox" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=475938716]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextDisplay" type="RichTextLabel" parent="CanvasLayer/Control/CenterContainer/DialogBox" unique_id=247785168]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+text = "Das ist random tutorial text"
+fit_content = true
+scroll_active = false
+
+[node name="SkipButton" type="Button" parent="CanvasLayer/Control/CenterContainer/DialogBox" unique_id=1480429505]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+text = "Skip"
+
+[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/TextDisplay" instance=ExtResource("99_shadow")]
+
+[node name="DropShadow" parent="CanvasLayer/Control/CenterContainer/DialogBox/SkipButton" instance=ExtResource("99_shadow")]

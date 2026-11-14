@@ -2,41 +2,64 @@
 
 [ext_resource type="Texture2D" uid="uid://cyyn4ym1xmp7h" path="res://ui/hover.png" id="1_bylrb"]
 [ext_resource type="FontFile" uid="uid://cc0oy634jh2wh" path="res://ui/PixelifySans-VariableFont_wght.ttf" id="1_csppu"]
-[ext_resource type="Texture2D" uid="uid://xfdyfu5xm6j5" path="res://ui/Button.png" id="1_f5ojl"]
 [ext_resource type="Texture2D" uid="uid://c6mon2h6bc7dp" path="res://ui/base.png" id="1_qv5a7"]
+[ext_resource type="Texture2D" uid="uid://ddjwhn72wtdag" path="res://ui/FAFO_UIButtons4.png" id="2_tu8b0"]
 [ext_resource type="Texture2D" uid="uid://clyc8rx0ksmfc" path="res://ui/click.png" id="3_0kdba"]
+[ext_resource type="Texture2D" uid="uid://bappslxb1uyu5" path="res://ui/FAFO_LevelDialogue.png" id="6_tu8b0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_omn1t"]
+texture = ExtResource("2_tu8b0")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(1, 1, 98, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bylrb"]
 texture = ExtResource("1_bylrb")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(1, 1, 98, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ls611"]
 texture = ExtResource("1_qv5a7")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(1, 1, 98, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0kdba"]
 texture = ExtResource("3_0kdba")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(1, 1, 98, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rg4vy"]
-content_margin_left = 32.0
-content_margin_top = 16.0
-content_margin_right = 32.0
-content_margin_bottom = 16.0
-texture = ExtResource("1_f5ojl")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
+content_margin_left = 24.0
+content_margin_top = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+texture = ExtResource("6_tu8b0")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(90, 0, 540, 720)
 
 [resource]
 Button/colors/font_color = Color(0.8745098, 0.24313726, 0.13725491, 1)
@@ -44,6 +67,7 @@ Button/colors/font_hover_color = Color(0.8745098, 0.24313726, 0.13725491, 1)
 Button/colors/font_pressed_color = Color(0.8745098, 0.24313726, 0.13725491, 1)
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_csppu")
+Button/styles/disabled = SubResource("StyleBoxTexture_omn1t")
 Button/styles/hover = SubResource("StyleBoxTexture_bylrb")
 Button/styles/normal = SubResource("StyleBoxTexture_ls611")
 Button/styles/pressed = SubResource("StyleBoxTexture_0kdba")
