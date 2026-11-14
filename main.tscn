@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://chlat0lurrywx" path="res://mechanics/puzzle_base.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bvwwi5ndwtfcc" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cpuqtvn7n2k54" path="res://gamemap/dialogueManager.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://dqr37qqt035pi" path="res://gamemap/waterpumps2D.tscn" id="4_efxa6"]
+[ext_resource type="PackedScene" uid="uid://cg0fdod4ylnst" path="res://gamemap/gamemap.tscn" id="2_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=1015319845]
 script = ExtResource("1_h2yge")
 
-[node name="waterpumps2D" parent="." unique_id=277553271 instance=ExtResource("4_efxa6")]
-position = Vector2(202, 176)
+[node name="Gamemap" parent="." unique_id=1799448745 instance=ExtResource("2_1bvp3")]
+unique_name_in_owner = true
 
 [node name="LevelManager" parent="." unique_id=1144776670 instance=ExtResource("1_0xm2m")]
 unique_name_in_owner = true

@@ -145,6 +145,8 @@ func _get_camera_play_area() -> Rect2:
 
 
 func _fit_camera() -> void:
+	if not level_camera.enabled:
+		return
 	var index := current_level - 1
 	if index < 0 or index >= levels.get_child_count():
 		return
@@ -239,6 +241,9 @@ func show_instructions() -> void:
 	grid_manager.interaction_blocked = level.dialog_active
 
 func set_visibility(b: bool) -> void:
+	level_camera.enabled = b
+	if not b and get_viewport().get_camera_2d() == null:
+		get_viewport().canvas_transform = Transform2D.IDENTITY
 	visible = b
 	%BackgroundCanvas.visible = b
 	%GUI.visible = b
@@ -251,6 +256,8 @@ func set_visibility(b: bool) -> void:
 		grid_manager.stop_running()
 		grid_manager.cancel_placement()
 	process_mode = Node.PROCESS_MODE_INHERIT if b else Node.PROCESS_MODE_DISABLED
+	if b:
+		_queue_camera_fit()
 
 
 func _capture_start_layout() -> void:
