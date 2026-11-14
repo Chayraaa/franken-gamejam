@@ -1,7 +1,20 @@
 extends BlockBase
 class_name Rotator
 
-@export var clockwise: bool = true
+@export var clockwise: bool = true:
+	set(value):
+		clockwise = value
+		_update_direction_visual()
+
+
+func _ready() -> void:
+	_update_direction_visual()
+
+
+func _update_direction_visual() -> void:
+	var sprite := get_node_or_null("Sprite2D") as Sprite2D
+	if sprite != null:
+		sprite.flip_h = not clockwise
 
 
 func prepare_step() -> void:

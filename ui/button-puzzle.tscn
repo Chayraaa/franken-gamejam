@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://do7xigjprafwc"]
+
+[ext_resource type="Script" uid="uid://xfogkg4uht3t" path="res://ui/button_puzzle.gd" id="1_8c03w"]
+
+[node name="Button" type="Button" unique_id=2013946235]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+script = ExtResource("1_8c03w")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

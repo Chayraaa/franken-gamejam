@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://chlat0lurrywx"]
+
+[ext_resource type="Script" uid="uid://kg7hrtvx6g51" path="res://mechanics/level_manager.gd" id="1_dnp8w"]
+[ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="2_7po70"]
+[ext_resource type="Script" uid="uid://50k1cj3x7ojw" path="res://mechanics/grid_manager.gd" id="3_i2vme"]
+[ext_resource type="PackedScene" uid="uid://dcqe7peb48q8d" path="res://mechanics/blocks/box/box.tscn" id="4_4jh4i"]
+[ext_resource type="PackedScene" uid="uid://dk3uow3i88qod" path="res://mechanics/blocks/mover/mover.tscn" id="5_o86sm"]
+[ext_resource type="PackedScene" uid="uid://dlf7uw2tuf3h8" path="res://mechanics/blocks/pusher/pusher.tscn" id="6_xssjj"]
+[ext_resource type="PackedScene" uid="uid://ncavhr1lu42k" path="res://mechanics/blocks/rotator/rotator.tscn" id="7_7foxy"]
+[ext_resource type="PackedScene" uid="uid://du5gmm7m65trm" path="res://mechanics/blocks/cloner/cloner.tscn" id="8_fxgs3"]
+[ext_resource type="PackedScene" uid="uid://bfn1j076vlvhh" path="res://mechanics/blocks/wall/wall.tscn" id="9_1giwo"]
+[ext_resource type="PackedScene" uid="uid://d35xtlvadeq2q" path="res://levels/level1.tscn" id="10_7po70"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6egpn"]
+resource_name = "Blocks"
+scenes/1/scene = ExtResource("4_4jh4i")
+scenes/2/scene = ExtResource("5_o86sm")
+scenes/3/scene = ExtResource("6_xssjj")
+scenes/4/scene = ExtResource("7_7foxy")
+scenes/5/scene = ExtResource("8_fxgs3")
+scenes/6/scene = ExtResource("9_1giwo")
+
+[sub_resource type="TileSet" id="TileSet_w75uu"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_6egpn")
+
+[node name="LevelManager" type="Node2D" unique_id=1144776670]
+script = ExtResource("1_dnp8w")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1978050073]
+anchor_mode = 0
+zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1714668591]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1599458179]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_7po70")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=323723853]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control3" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=592846129]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1518313650]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+mouse_filter = 2
+alignment = 1
+
+[node name="StepButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1441507035]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Step"
+
+[node name="RunButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1131952220]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Run"
+
+[node name="ResetButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=211437914]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Reset"
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=892762648]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1317302027]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer/ButtonContainer" unique_id=1575798260]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/VBoxContainer/ButtonContainer" unique_id=897350746]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=583059526]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+mouse_filter = 2
+
+[node name="GoalTickTitle" type="Label" parent="CanvasLayer/Control" unique_id=1027420956]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.09, 0.06, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 96
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CompletionScreen" type="ColorRect" parent="CanvasLayer/Control" unique_id=1437636866]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.05, 0.04, 0.75)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/CompletionScreen" unique_id=251740685]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CompletionScreen/CenterContainer" unique_id=1544113958]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer" unique_id=58759370]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 64
+text = "Geschafft!"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer" unique_id=1647803356]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="CompletionResetButton" type="Button" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons" unique_id=106350653]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 56)
+layout_mode = 2
+text = "Reset"
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/Control/CompletionScreen/CenterContainer/VBoxContainer/Buttons" unique_id=463297669]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 56)
+layout_mode = 2
+text = "Weiter"
+
+[node name="GridManager" type="Node2D" parent="." unique_id=1083065542 node_paths=PackedStringArray("display_grid")]
+unique_name_in_owner = true
+script = ExtResource("3_i2vme")
+display_grid = NodePath("TileMapLayer")
+size = Vector2i(20, 20)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="GridManager" unique_id=738058262]
+tile_set = SubResource("TileSet_w75uu")
+
+[node name="Levels" type="Node2D" parent="." unique_id=1038130198]
+unique_name_in_owner = true
+
+[node name="Level1" parent="Levels" unique_id=1077325593 instance=ExtResource("10_7po70")]
+visible = false
+
+[connection signal="step_finished" from="GridManager" to="GridManager" method="_on_step_finished"]

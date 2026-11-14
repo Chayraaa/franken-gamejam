@@ -16,8 +16,14 @@ func step() -> Variant:
 	var source: BlockBase = grid.get_planned_block_at(origin - dir)
 	if source == null or not grid.is_inside(target):
 		return null
-	if grid.get_planned_block_at(target) != null:
-		return null
+	var obstacle := grid.get_planned_block_at(target)
+	if obstacle != null:
+		if not obstacle.push(dir):
+			return null
+		# A block already moved in this direction may report success without
+		# moving again. Only clone once the output cell is actually free.
+		if grid.get_planned_block_at(target) != null:
+			return null
 
 	# Preserve the source's script, exported settings, children and rotation.
 	# Do not copy signal connections to the original instance's listeners.

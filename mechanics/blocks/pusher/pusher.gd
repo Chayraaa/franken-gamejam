@@ -1,7 +1,7 @@
 extends BlockBase
 class_name Pusher
 
-@export var base_direction: Vector2 = Vector2.UP
+@export var base_direction: Vector2 = Vector2.RIGHT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

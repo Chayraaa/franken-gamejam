@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://dk3uow3i88qod"]
 
 [ext_resource type="Script" uid="uid://oki3wmq6dx4l" path="res://mechanics/blocks/mover/mover.gd" id="1_somsw"]
-[ext_resource type="Texture2D" uid="uid://dfpyhmaxw3djb" path="res://mechanics/blocks/mover/Screenshot From 2026-11-13 22-52-59.png" id="1_v3ren"]
+[ext_resource type="Texture2D" uid="uid://bssimkkhyw1an" path="res://mechanics/blocks/mover/move.png" id="2_somsw"]
 
 [node name="Mover" type="Node2D" unique_id=536817343]
 script = ExtResource("1_somsw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=676359128]
-scale = Vector2(0.10774411, 0.10223642)
-texture = ExtResource("1_v3ren")
+texture = ExtResource("2_somsw")
