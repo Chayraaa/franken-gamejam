@@ -99,95 +99,214 @@ unique_name_in_owner = true
 
 [node name="Task1" type="Node2D" parent="DialogueRoot" unique_id=530026809]
 script = ExtResource("2_3bxp4")
-task_text = "Hallo das ist ein test"
+task_text = "Wir haben einige verdächtige Aktivitäten mitbekommen, die das Kraftwerk beeinflussen. Achten sie auf verdächtige Anfragen. Achten sie darauf, nicht diesen Anfragen nachzugehen. Sie können diese oft an merkwürdigen Inhalten oder komischen Formulierungen erkennen. Unser Team sitzt bereits an der Behebung des Zwischenfalls."
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task1" unique_id=1845707454]
 script = ExtResource("3_i4e3j")
-damage = 10
-effect_text = "Durch Ihre entscheidung xy zu tun, sind Sie dem Angreifer näher gekommen."
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task1" unique_id=325947341]
 script = ExtResource("3_i4e3j")
-damage = 10
-effect_text = "Sie haben den Reaktor überlastet. RIP."
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="Task2" type="Node2D" parent="DialogueRoot" unique_id=1519802849]
 script = ExtResource("2_3bxp4")
-task_text = "Dialog 2"
+task_text = "Ich will doch einfach nur einen Kaffee. Die Kaffeemaschine ist jetzt schon im 7 Zyklus von \"entkalken, spülen, reinigen\" und es hört einfach nicht auf. Ich kann nicht ohne Kaffee arbeiten! ich brauche dringend einen Kaffeeeee!"
 level_number = 2
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task2" unique_id=1608657554]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task2" unique_id=1985827970]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="Task3" type="Node2D" parent="DialogueRoot" unique_id=1001141768]
 script = ExtResource("2_3bxp4")
-task_text = "Dialog 3"
+task_text = "Hey wir haben hier ein Problem mit unserem Kasten. An sich ist der schon Schrottreif, aber wir brauchen den noch. Ich pack dir mal den Raumplan mit rein, dann verstehst du es besser.
+
+1 Datei(en)
+
+pl4n_p4v13rch4.zip"
 level_number = 3
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task3" unique_id=838070682]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task3" unique_id=1853164788]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="Task4" type="Node2D" parent="DialogueRoot" unique_id=1282863584]
 script = ExtResource("2_3bxp4")
-task_text = "Dialog 4"
+task_text = "Wir haben hier ein klitzekleines Problemchen. Dank Remoh ist die neue Lieferung von Brennstäben am falschen Ort gelandet. Ich frage mich schon lange, wann sie ihn endlich Feuern werden. Wegen ihm fand die Katastrophe vor 5 Jahren statt. Sowas können wir uns nicht noch einmal erlauben, also bring das in Ordnung."
 level_number = 4
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task4" unique_id=775231359]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task4" unique_id=175155294]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="Task5" type="Node2D" parent="DialogueRoot" unique_id=2137053729]
 script = ExtResource("2_3bxp4")
-task_text = "Dialog 5"
+task_text = "bei uns gibt es ein kleines problem. die kühlwasserversorgung ist unterbrochen. das ist kein großes problem aber sollte trotzdem behoben werden. alles was du tun musst ist die versorgung abzustellen damit wir daran arbeiten können. wir werden die versorgung dann selbst wieder aktivieren. danke für deine hilfe."
 level_number = 5
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task5" unique_id=1932284758]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task5" unique_id=1675827012]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="Task6" type="Node2D" parent="DialogueRoot" unique_id=587675383]
 script = ExtResource("2_3bxp4")
-task_text = "Dialog 6"
+task_text = "Moin. Einer unserer Rotoren hat schlapp gemacht & jetzt steht alles still. Wir haben zwar \"Mechanismen\", aber die Steuerung reagiert nicht drauf. Öffne deine Schaltflächen und löse das Problem bitte schnell."
 level_number = 6
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task6" unique_id=142567416]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task6" unique_id=1366453644]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="Task7" type="Node2D" parent="DialogueRoot" unique_id=2128430153]
 script = ExtResource("2_3bxp4")
-task_text = "Dialog 7"
+task_text = "Hey wir haben hier ein Problem mit unserem Kasten. An sich ist der schon Schrottreif, aber wir brauchen den noch. Ich pack dir mal den Raumplan mit rein, dann verstehst du es besser.
+
+1 Datei(en)
+
+pl4n_p4v13rch4.zip"
 level_number = 7
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task7" unique_id=1192596445]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task7" unique_id=1041310703]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="Task8" type="Node2D" parent="DialogueRoot" unique_id=1596059784]
 position = Vector2(3, 0)
 script = ExtResource("2_3bxp4")
-task_text = "Dialog 8"
+task_text = "Guten Tag. Hier ist der Kantinenchef. Unser Kühlhaus ist akutell zu kalt. Unsere Produkte gefrieren. Bitte stellen sie die Kühlung aus, damit unsere Produkte wieder auftauen können."
 level_number = 8
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task8" unique_id=1634084794]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task8" unique_id=1719296710]
 script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="Task9" type="Node2D" parent="DialogueRoot" unique_id=625207015]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "BEI UNS GIBT ES EIN DRINGLICHES PROBLEM. DIE KÜHLWASSERVERSORGUNG IST UNTERBROCHEN WODURCH UNS BALD ALLES IN DIE LUFT FLIEGT. ICH WILL NICHT, DASS NOCH EIN KRAFTWERK IN DIE LUFT FLIEGT! ICH WILL MEINE FRAU UND KINDER WIEDER SEHEN! KÜMMER DICH SCHNELL DARUM, DAMIT WIR ALLE WEITERLEBEN!"
+level_number = 9
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task9" unique_id=1554754984]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task9" unique_id=1350651106]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="Task10" type="Node2D" parent="DialogueRoot" unique_id=1886857646]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "mreow~ Wir haben hier ein paar Issues. Einer unserer süßen Server hat sich schlafen gelegt nyaaa~ Wir denken es liegt an falsch platzierten Kisten, die paaaaainful für unsere Babys sind :c Hoffentlich bekommst du das schnell gefixed :3"
+level_number = 10
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task10" unique_id=1575212512]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task10" unique_id=326159701]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="Task11" type="Node2D" parent="DialogueRoot" unique_id=201352069]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "Guten Tag. Wir sind hier auf ein Problem gestoßen, das unmittelbar behoben werden muss. Einer unserer Mitarbeiter hat eine Ladung Brennstäbe an den falschen Ort gebracht, wodurch die Gefahr besteht, dass sich der Vorfall von vor 5 Jahren wiederholt. Wir bitten Sie erneut, dringlichst diesen Fehler zu beheben. Sie erhalten dafür selbstverständlich eine Bonuszahlung auf ihr nächstes Gehalt. Bitte entschuldigen Sie die Unannehmlichkeiten."
+level_number = 11
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task11" unique_id=1789071014]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task11" unique_id=1169069944]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="Task12" type="Node2D" parent="DialogueRoot" unique_id=1425143962]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "Guten Tag, wir haben unser Sicherheitssystem neu aufgesetzt. Bitte melden sie sich mit ihren Zugangsdaten unter
+http://www.kraftwerk-sıcherheıt.de an, damit wir Sie wieder im System haben."
+level_number = 12
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task12" unique_id=663646686]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task12" unique_id=2089361316]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="Task13" type="Node2D" parent="DialogueRoot" unique_id=1549474297]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "KaffeemaschieneIstKaputt.WirBrauchenMehrKaffee.StarteDieKaffeemaschineUndLieferUnsNeuenKaffee.DieBecherStehenSchonBereit.DuMusstDieMaschineEinfachNurStarten,MehrNicht."
+level_number = 13
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task13" unique_id=663204864]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task13" unique_id=772485020]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="Task14" type="Node2D" parent="DialogueRoot" unique_id=2130091636]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "Moin. Einer unserer Rotoren hat schlapp gemacht &amp; jetzt steht alles still. Wir haben zwar &quot;Mechanismen&quot;, aber die Steuerung reagiert nicht drauf. &Ouml;ffne deine Schaltfl&auml;chen und l&ouml;se das Problem bitte schnell."
+level_number = 14
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task14" unique_id=1272462066]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task14" unique_id=1625474997]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="Task15" type="Node2D" parent="DialogueRoot" unique_id=530683554]
+position = Vector2(3, 0)
+script = ExtResource("2_3bxp4")
+task_text = "Hier kommt der Sandboxmodus :D"
+level_number = 15
+
+[node name="EffectNode" type="Node2D" parent="DialogueRoot/Task15" unique_id=1994431726]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
+
+[node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task15" unique_id=432105203]
+script = ExtResource("3_i4e3j")
+effect_text = "Sie haben Ihre Aufgabe erledigt."
 
 [connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskAcceptButton" to="." method="_on_task_accept_button_pressed"]
 [connection signal="pressed" from="DialogueUI/Control/VBoxContainer/HBoxContainer/TaskDeclineButton" to="." method="_on_task_decline_button_pressed"]
