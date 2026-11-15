@@ -10,7 +10,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 
 func _on_area_2d_mouse_entered() -> void:
-	%Sprite2D.get_material().set_shader_parameter("width", 1)
+	%Sprite2D.get_material().set_shader_parameter("width", 2)
 	pass
 
 

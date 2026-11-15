@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://dqr37qqt035pi"]
+[gd_scene format=3 uid="uid://bohah8crcsfby"]
 
-[ext_resource type="Script" uid="uid://cakem5e0bvwyx" path="res://gamemap/clickable.gd" id="1_svk2v"]
-[ext_resource type="Shader" uid="uid://cjir5e551s4l5" path="res://gamemap/interactable_2d.gdshader" id="2_f2bgm"]
-[ext_resource type="Texture2D" uid="uid://berl2f3bl32ol" path="res://gamemap/waterpumps.png" id="3_0v3ma"]
+[ext_resource type="Shader" uid="uid://cjir5e551s4l5" path="res://gamemap/interactables/interactable_2d.gdshader" id="1_oy2r8"]
+[ext_resource type="Script" uid="uid://cakem5e0bvwyx" path="res://gamemap/clickable.gd" id="2_7sode"]
+[ext_resource type="Texture2D" uid="uid://berl2f3bl32ol" path="res://gamemap/interactables/waterpumps.png" id="3_dwi2q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0v3ma"]
-shader = ExtResource("2_f2bgm")
+shader = ExtResource("1_oy2r8")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
@@ -14,8 +14,8 @@ shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d0utv"]
-shader = ExtResource("2_f2bgm")
-shader_parameter/color = Color(0.8076375, 0.8076375, 0.012095169, 1)
+shader = ExtResource("1_oy2r8")
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
@@ -25,19 +25,19 @@ shader_parameter/number_of_images = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q20h5"]
 size = Vector2(332.00406, 138.81537)
 
-[node name="waterpumps2D" type="Node2D" unique_id=277553271]
+[node name="waterpumps2D" type="Node2D" unique_id=1342247126]
 material = SubResource("ShaderMaterial_0v3ma")
-script = ExtResource("1_svk2v")
+script = ExtResource("2_7sode")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2135384288]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=944072302]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_d0utv")
 position = Vector2(0, 2.3841858e-07)
-texture = ExtResource("3_0v3ma")
+texture = ExtResource("3_dwi2q")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1126087481]
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=2033519282]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=2433321]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=292892421]
 position = Vector2(-0.32686108, -0.00967857)
 scale = Vector2(0.83933306, 1.3397291)
 shape = SubResource("RectangleShape2D_q20h5")

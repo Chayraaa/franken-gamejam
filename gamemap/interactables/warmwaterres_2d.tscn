@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://wsmoeew7p2d6"]
+
+[ext_resource type="Script" uid="uid://cakem5e0bvwyx" path="res://gamemap/clickable.gd" id="1_cpde7"]
+[ext_resource type="Shader" uid="uid://cjir5e551s4l5" path="res://gamemap/interactables/interactable_2d.gdshader" id="2_3jjc7"]
+[ext_resource type="Texture2D" uid="uid://cklaheo7302e3" path="res://gamemap/interactables/warmwaterreservoir.png" id="3_7pa5l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8kq8"]
+shader = ExtResource("2_3jjc7")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q20h5"]
+size = Vector2(201.4458, 60.259377)
+
+[node name="warmwaterres2D" type="Node2D" unique_id=1909038546]
+script = ExtResource("1_cpde7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1170044709]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_q8kq8")
+position = Vector2(-3, 2)
+texture = ExtResource("3_7pa5l")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1592424]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=69970323]
+position = Vector2(0, -1.1920929e-07)
+scale = Vector2(1.0126793, 1.4935435)
+shape = SubResource("RectangleShape2D_q20h5")
+
+[connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_exited"]

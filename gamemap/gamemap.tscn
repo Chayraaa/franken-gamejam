@@ -2,22 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b2yyog10ny4tj" path="res://gamemap/game_manager.gd" id="1_q8kq8"]
 [ext_resource type="Texture2D" uid="uid://co10efl6cfra0" path="res://gamemap/gamemap.png" id="2_35x0l"]
-[ext_resource type="PackedScene" uid="uid://dqr37qqt035pi" path="res://gamemap/waterpumps2D.tscn" id="2_k42st"]
-[ext_resource type="Texture2D" uid="uid://berl2f3bl32ol" path="res://gamemap/waterpumps.png" id="2_ufohl"]
-[ext_resource type="Script" uid="uid://cakem5e0bvwyx" path="res://gamemap/clickable.gd" id="4_3px3d"]
-[ext_resource type="Shader" uid="uid://cjir5e551s4l5" path="res://gamemap/interactable_2d.gdshader" id="5_trss4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8kq8"]
-shader = ExtResource("5_trss4")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-shader_parameter/number_of_images = Vector2(1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q20h5"]
-size = Vector2(332.00406, 138.81537)
+[ext_resource type="PackedScene" uid="uid://bohah8crcsfby" path="res://gamemap/interactables/waterpumps_2d.tscn" id="2_k42st"]
+[ext_resource type="PackedScene" uid="uid://b0g8blr6q2ies" path="res://gamemap/interactables/reactorroom_2d.tscn" id="4_trss4"]
+[ext_resource type="PackedScene" uid="uid://mnha0hpcm4iy" path="res://gamemap/interactables/generator_2d.tscn" id="5_prf1e"]
+[ext_resource type="PackedScene" uid="uid://dwg2ipa6l6exy" path="res://gamemap/interactables/fridge_2d.tscn" id="6_prf1e"]
+[ext_resource type="PackedScene" uid="uid://coe00ls7bj25g" path="res://gamemap/interactables/turbine_2d.tscn" id="7_3px3d"]
+[ext_resource type="PackedScene" uid="uid://be0swjhlr6k6v" path="res://gamemap/interactables/coolingwaterres_2d.tscn" id="8_trss4"]
+[ext_resource type="PackedScene" uid="uid://wsmoeew7p2d6" path="res://gamemap/interactables/warmwaterres_2d.tscn" id="9_prf1e"]
 
 [node name="Gamemap" type="Node2D" unique_id=1799448745]
 script = ExtResource("1_q8kq8")
@@ -46,29 +37,27 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_35x0l")
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="waterpumps2D" parent="." unique_id=277553271 instance=ExtResource("2_k42st")]
-position = Vector2(173, 570)
+[node name="waterpumps2D" parent="." unique_id=1342247126 instance=ExtResource("2_k42st")]
+position = Vector2(363, 571)
 
-[node name="waterpumps2D2" type="Node2D" parent="." unique_id=153616483]
-position = Vector2(569, 548)
-script = ExtResource("4_3px3d")
+[node name="reactorroom2D" parent="." unique_id=393178060 instance=ExtResource("4_trss4")]
+position = Vector2(383, 268)
 
-[node name="Sprite2D" type="Sprite2D" parent="waterpumps2D2" unique_id=2135384288]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_q8kq8")
-position = Vector2(0, 2.3841858e-07)
-texture = ExtResource("2_ufohl")
+[node name="generator2D" parent="." unique_id=1356591211 instance=ExtResource("5_prf1e")]
+position = Vector2(741, 610)
 
-[node name="Area2D" type="Area2D" parent="waterpumps2D2/Sprite2D" unique_id=1126087481]
+[node name="fridge2D" parent="." unique_id=408327607 instance=ExtResource("6_prf1e")]
+position = Vector2(986, 534)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="waterpumps2D2/Sprite2D/Area2D" unique_id=2433321]
-position = Vector2(-0.32686108, -0.00967857)
-scale = Vector2(0.83933306, 1.3397291)
-shape = SubResource("RectangleShape2D_q20h5")
+[node name="turbine2D" parent="." unique_id=1036415946 instance=ExtResource("7_3px3d")]
+position = Vector2(752, 448)
+
+[node name="coolingwaterres2D" parent="." unique_id=483365727 instance=ExtResource("8_trss4")]
+position = Vector2(797, 248)
+
+[node name="warmwaterres2D" parent="." unique_id=1909038546 instance=ExtResource("9_prf1e")]
+position = Vector2(833, 77)
 
 [connection signal="input_event" from="waterpumps2D" to="." method="_on_waterpumps_2d_input_event"]
-[connection signal="input_event" from="waterpumps2D2/Sprite2D/Area2D" to="waterpumps2D2" method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="waterpumps2D2/Sprite2D/Area2D" to="waterpumps2D2" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="waterpumps2D2/Sprite2D/Area2D" to="waterpumps2D2" method="_on_area_2d_mouse_exited"]
