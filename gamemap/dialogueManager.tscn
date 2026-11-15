@@ -103,11 +103,13 @@ task_text = "Hallo das ist ein test"
 
 [node name="EffectNode" type="Node2D" parent="DialogueRoot/Task1" unique_id=1845707454]
 script = ExtResource("3_i4e3j")
-damage = 4
+damage = 10
+effect_text = "Durch Ihre entscheidung xy zu tun, sind Sie dem Angreifer näher gekommen."
 
 [node name="EffectNode2" type="Node2D" parent="DialogueRoot/Task1" unique_id=325947341]
 script = ExtResource("3_i4e3j")
-damage = -2
+damage = 10
+effect_text = "Sie haben den Reaktor überlastet. RIP."
 
 [node name="Task2" type="Node2D" parent="DialogueRoot" unique_id=1519802849]
 script = ExtResource("2_3bxp4")

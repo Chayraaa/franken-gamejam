@@ -2,6 +2,7 @@ extends Node2D
 class_name EffectNode
 
 @export var damage: int = 0
+@export_multiline var effect_text: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

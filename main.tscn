@@ -8,16 +8,18 @@
 [node name="Main" type="Node2D" unique_id=1015319845]
 script = ExtResource("1_h2yge")
 
-[node name="Gamemap" parent="." unique_id=1799448745 instance=ExtResource("2_1bvp3")]
+[node name="Gamemap" parent="." unique_id=1799448745 node_paths=PackedStringArray("dialogue_manager") instance=ExtResource("2_1bvp3")]
 unique_name_in_owner = true
+dialogue_manager = NodePath("../Dialogues")
 
 [node name="LevelManager" parent="." unique_id=1144776670 instance=ExtResource("1_0xm2m")]
 unique_name_in_owner = true
 visible = false
 
-[node name="Dialogues" parent="." unique_id=1854594120 node_paths=PackedStringArray("level_manager") instance=ExtResource("1_ig7tw")]
+[node name="Dialogues" parent="." unique_id=1854594120 node_paths=PackedStringArray("level_manager", "game_manager") instance=ExtResource("1_ig7tw")]
 unique_name_in_owner = true
 visible = false
 level_manager = NodePath("../LevelManager")
+game_manager = NodePath("../Gamemap")
 
 [connection signal="level_finished" from="LevelManager" to="Dialogues" method="_on_level_manager_level_finished"]

@@ -16,12 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://7m6f0eb6foy8" path="res://levels/level5.tscn" id="12_1giwo"]
 [ext_resource type="PackedScene" uid="uid://c7vywfuddikar" path="res://levels/level6.tscn" id="12_6egpn"]
 [ext_resource type="PackedScene" uid="uid://bajm4d2ttwt2e" path="res://levels/level3.tscn" id="12_7foxy"]
-[ext_resource type="PackedScene" uid="uid://c4g2pkf3poisk" path="res://levels/level10.tscn" id="12_7nw8j"]
+[ext_resource type="PackedScene" uid="uid://c4g2pkf3poisk" path="res://levels/level12.tscn" id="12_7nw8j"]
 [ext_resource type="PackedScene" uid="uid://c70q1shkjqpvs" path="res://levels/level8.tscn" id="12_fjn34"]
 [ext_resource type="PackedScene" uid="uid://bh2d0kyebnqk7" path="res://levels/level4.tscn" id="12_fxgs3"]
 [ext_resource type="PackedScene" uid="uid://b50jrwqpoo32l" path="res://levels/level9.tscn" id="12_n5v2h"]
 [ext_resource type="PackedScene" uid="uid://dhufu2txm47ss" path="res://levels/level11.tscn" id="12_nn0su"]
 [ext_resource type="PackedScene" uid="uid://bog3i1wjykp4b" path="res://levels/level7.tscn" id="19_j80gl"]
+[ext_resource type="PackedScene" uid="uid://u0mlxj6a8dx7" path="res://levels/level10.tscn" id="20_level12"]
+[ext_resource type="PackedScene" path="res://levels/level13.tscn" id="21_level13"]
+[ext_resource type="PackedScene" path="res://levels/level14.tscn" id="22_level14"]
 [ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="99_shadow"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6egpn"]
@@ -281,8 +284,15 @@ building_blocks = Array[Dictionary]([{
 
 [node name="Level9" parent="Levels" unique_id=2146240974 instance=ExtResource("12_n5v2h")]
 
-[node name="Level10" parent="Levels" unique_id=1808594184 instance=ExtResource("12_7nw8j")]
+[node name="Level10" parent="Levels" unique_id=178879873 instance=ExtResource("20_level12")]
 
 [node name="Level11" parent="Levels" unique_id=1077325593 instance=ExtResource("12_nn0su")]
+
+[node name="Level12" parent="Levels" unique_id=1808594184 instance=ExtResource("12_7nw8j")]
+
+[node name="Level13" parent="Levels" unique_id=1033676323 instance=ExtResource("21_level13")]
+display_text = Array[String](["Sie werden feststellen, dass sich Blöcke auf den Flaggen nicht mehr bewegen dürfen.", "Die Rotatoren [img]res://mechanics/blocks/rotator/rotate.png[/img] neben dem Ziel werden Ihnen Probleme machen.", "Vergessen Sie nie. Ein Block der von Zwei Rotatoren [img]res://mechanics/blocks/rotator/rotate.png[/img] betroffen ist addiert das drehmoment.", "90 Grad im Uhrzeigersinn + 90 Grad gegen den Uhrzeigersinn bedeutet = 0 Grad Drehung.", "Viel Erfolg."])
+
+[node name="Level14" parent="Levels" unique_id=2101237519 instance=ExtResource("22_level14")]
 
 [node name="Sandbox" parent="Levels" unique_id=1568218771 instance=ExtResource("11_i2vme")]

@@ -1,0 +1,138 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_pairu"]
+[ext_resource type="PackedScene" path="res://mechanics/blocks/mover/mover.tscn" id="2_nf7o6"]
+[ext_resource type="PackedScene" path="res://mechanics/blocks/cloner/cloner.tscn" id="3_4500m"]
+[ext_resource type="PackedScene" path="res://mechanics/blocks/rotator/rotator.tscn" id="4_j1e20"]
+[ext_resource type="PackedScene" path="res://mechanics/blocks/box/box.tscn" id="5_cbi5p"]
+[ext_resource type="PackedScene" path="res://mechanics/blocks/pusher/pusher.tscn" id="6_nkhxg"]
+[ext_resource type="PackedScene" path="res://mechanics/blocks/wall/wall.tscn" id="7_7o3qi"]
+[ext_resource type="Texture2D" path="res://mechanics/tiles/tiles-tileset.png" id="8_met4y"]
+[ext_resource type="Theme" path="res://ui/ui-theme.tres" id="9_e2ol8"]
+[ext_resource type="PackedScene" path="res://ui/drop-shadow.tscn" id="10_hk641"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_f7u7y"]
+resource_name = "Blocks"
+scenes/1/scene = ExtResource("5_cbi5p")
+scenes/2/scene = ExtResource("2_nf7o6")
+scenes/3/scene = ExtResource("6_nkhxg")
+scenes/4/scene = ExtResource("4_j1e20")
+scenes/5/scene = ExtResource("3_4500m")
+scenes/6/scene = ExtResource("7_7o3qi")
+
+[sub_resource type="TileSet" id="TileSet_jq2cn"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_f7u7y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omn1t"]
+texture = ExtResource("8_met4y")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_1 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_8hd6v"]
+tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "buildable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "goal"
+custom_data_layer_1/type = 1
+sources/6 = SubResource("TileSetAtlasSource_omn1t")
+tile_proxies/coords_level = [[3, Vector2i(0, 0)], [6, Vector2i(0, 0)], [4, Vector2i(0, 0)], [6, Vector2i(1, 0)], [5, Vector2i(0, 0)], [6, Vector2i(2, 0)]]
+
+[node name="Level13" type="Node2D" unique_id=1077325593]
+script = ExtResource("1_pairu")
+building_blocks = Array[Dictionary]([{
+"block": ExtResource("3_4500m"),
+"count": 2
+}, {
+"block": ExtResource("4_j1e20"),
+"count": 1
+}, {
+"block": ExtResource("5_cbi5p"),
+"count": 1
+}])
+display_text = Array[String](["Stillstand: Besetzen Sie beide Ziele für drei Takte. Ankunft allein reicht nicht."])
+
+[node name="CellLayer" type="TileMapLayer" parent="." unique_id=1184468024]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAABgAAAAEAAAAAAAAABgAAAAIAAAAAAAAABgAAAAMAAAAAAAAABgAAAAQAAAAAAAAABgAAAAUAAAAAAAAABgAAAAYAAAAAAAAABgAAAAcAAAAAAAAABgAAAAgAAAAAAAAABgAAAAkAAAAAAAAABgAAAAoAAAAAAAAABgABAAYA//////////8BAAcA//////////8BAAgA//////////8BAAkA//////////8BAAoAAAAAAAAABgACAAYA//////////8CAAcA//////////8CAAgA//////////8CAAkA//////////8CAAoAAAAAAAAABgADAAYA//////////8DAAcAAAAAAAAABAADAAgA//////////8DAAkA//////////8DAAoAAAAAAAAABgAEAAYA//////////8EAAcA//////////8EAAgA//////////8EAAkA//////////8EAAoAAAAAAAAABgABAAAAAAAAAAAABgACAAAAAAAAAAAABgADAAAAAAAAAAAABgAEAAAAAAAAAAAABgAFAAAAAAAAAAAABgAGAAAAAAAAAAAABgAHAAAAAAAAAAAABgAIAAAAAAAAAAAABgAJAAAAAAAAAAAABgAKAAAAAAAAAAAABgAFAAoAAAAAAAAABgAGAAoAAAAAAAAABgAHAAoAAAAAAAAABgAIAAoAAAAAAAAABgAJAAoAAAAAAAAABgAKAAoAAAAAAAAABgALAAAAAAAAAAAABgALAAEAAAAAAAAABgALAAIAAAAAAAAABgALAAMAAAAAAAAABgALAAQAAAAAAAAABgALAAUAAAAAAAAABgALAAYAAAAAAAAABgALAAcAAAAAAAAABgALAAgAAAAAAAAABgALAAkAAAAAAAAABgALAAoAAAAAAAAABgAAAAsA//////////8AAAwA//////////8AAA0A//////////8BAAEA//////////8BAAIA//////////8BAAMA//////////8BAAQA//////////8BAAUA//////////8BAA0A//////////8CAAEA//////////8CAAIA//////////8CAAMA//////////8CAAQA//////////8CAAUA//////////8CAA0A//////////8DAAEA//////////8DAAIA//////////8DAAMA//////////8DAAQA//////////8DAAUAAAAAAAAABAADAAwA//////////8DAA0A//////////8EAAEA//////////8EAAMA//////////8EAAQA//////////8EAAUA//////////8EAAwA//////////8EAA0A//////////8FAAgA//////////8FAAkA//////////8FAAsA//////////8FAAwA//////////8FAA0A//////////8GAAEAAAAAAAAABgAGAAQAAAAAAAAABgAGAAUA//////////8GAAYA//////////8GAAcAAAAAAAAABgAGAAgAAAAAAAAABgAGAAkAAAAAAAAABgAGAAsA//////////8GAAwA//////////8GAA0A//////////8HAAEA//////////8HAAMA//////////8HAAQA//////////8HAAUA//////////8HAAYA//////////8HAAcA//////////8HAAgA//////////8HAAkA//////////8HAAsA//////////8HAAwA//////////8HAA0A//////////8IAAEA//////////8IAAMA//////////8IAAQA//////////8IAAUA//////////8IAAYA//////////8IAAcA//////////8IAAgA//////////8IAAkA//////////8IAAsA//////////8IAAwA//////////8IAA0A//////////8JAAMA//////////8JAAQAAAAAAAAABAAJAAUA//////////8JAAYA//////////8JAAcA//////////8JAAgA//////////8JAAsA//////////8JAAwA//////////8JAA0A//////////8KAAEA//////////8KAAsA//////////8KAAwA//////////8KAA0A//////////8LAAsA//////////8LAAwA//////////8LAA0A//////////8MAAAA//////////8MAAEA//////////8MAAIA//////////8MAAMA//////////8MAAQA//////////8MAAUA//////////8MAAYA//////////8MAAcA//////////8MAAgA//////////8MAAkA//////////8MAAoA//////////8MAAsA//////////8MAAwA//////////8MAA0A//////////8NAAAA//////////8NAAEA//////////8NAAIA//////////8NAAMA//////////8NAAQA//////////8NAAUA//////////8NAAYA//////////8NAAcA//////////8NAAgA//////////8NAAkA//////////8NAAoA//////////8NAAsA//////////8NAAwA//////////8NAA0A//////////8GAAIAAAAAAAAABgAGAAMAAAAAAAAABgAKAAQAAAAAAAAABAAFAAQAAAAAAAAABAA=")
+tile_set = SubResource("TileSet_jq2cn")
+
+[node name="GridLayer" type="TileMapLayer" parent="." unique_id=1670379394]
+z_index = -1
+tile_map_data = PackedByteArray("AAABAAEABgACAAAAAAABAAIABgACAAAAAAABAAMABgACAAAAAAABAAQABgACAAAAAAABAAUABgACAAAAAAACAAEABgACAAAAAAACAAIABgACAAAAAAACAAMABgACAAAAAAACAAQABgACAAAAAAACAAUABgACAAAAAAADAAEABgACAAAAAAADAAIABgACAAAAAAADAAMABgACAAAAAAADAAQABgACAAAAAAADAAUABgACAAAAAAAEAAEABgACAAAAAAAEAAIABgACAAAAAAAEAAMABgACAAAAAAAEAAQABgACAAAAAAAEAAUABgACAAAAAAAAAAAABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAAAAMABgAAAAAAAAAAAAQABgAAAAAAAAAAAAUABgAAAAAAAAAAAAYABgAAAAAAAAABAAAABgAAAAAAAAACAAAABgAAAAAAAAADAAAABgAAAAAAAAAEAAAABgAAAAAAAAAFAAAABgAAAAAAAAAGAAAABgAAAAAAAAAHAAAABgAAAAAAAAAIAAAABgAAAAAAAAAJAAAABgAAAAAAAAAFAAEABgACAAAAAAAFAAIABgACAAAAAAAFAAMABgACAAAAAAAFAAQABgACAAAAAAAFAAUABgACAAAAAAAFAAYABgACAAAAAAAFAAcABgACAAAAAAAFAAgABgACAAAAAAAFAAkABgACAAAAAAAFAAoABgAAAAAAAAAGAAEABgAAAAAAAAAGAAIABgAAAAAAAAAGAAMABgAAAAAAAAAGAAQABgAAAAAAAAAGAAUABgAAAAAAAAAGAAYABgAAAAAAAAAGAAcABgAAAAAAAAAGAAgABgAAAAAAAAAGAAkABgAAAAAAAAAGAAoABgAAAAAAAAAHAAEABgAAAAAAAAAHAAIABgAAAAAAAAAHAAMABgAAAAAAAAAHAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAHAAkABgAAAAAAAAAHAAoABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAIAAcABgAAAAAAAAAIAAgABgAAAAAAAAAIAAkABgAAAAAAAAAIAAoABgAAAAAAAAAJAAEABgAAAAAAAAAJAAIABgAAAAAAAAAJAAMABgAAAAAAAAAJAAQABgAAAAAAAAAJAAUABgABAAAAAAAJAAYABgAAAAAAAAAJAAcABgAAAAAAAAAJAAgABgAAAAAAAAAJAAkABgAAAAAAAAAJAAoABgAAAAAAAAAAAAcABgAAAAAAAAAAAAgABgAAAAAAAAAAAAkABgAAAAAAAAAAAAoABgAAAAAAAAABAAYABgACAAAAAAABAAcABgACAAAAAAABAAgABgACAAAAAAABAAkABgACAAAAAAABAAoABgAAAAAAAAACAAYABgACAAAAAAACAAcABgACAAAAAAACAAgABgACAAAAAAACAAkABgACAAAAAAACAAoABgAAAAAAAAADAAYABgACAAAAAAADAAcABgACAAAAAAADAAgABgACAAAAAAADAAkABgACAAAAAAADAAoABgAAAAAAAAAEAAYABgACAAAAAAAEAAcABgACAAAAAAAEAAgABgACAAAAAAAEAAkABgACAAAAAAAEAAoABgAAAAAAAAAKAAkABgAAAAAAAAAKAAoABgAAAAAAAAAKAAAABgAAAAAAAAAKAAEABgAAAAAAAAAKAAIABgAAAAAAAAAKAAMABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgABAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAKAAgABgAAAAAAAAALAAAABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAALAAkABgAAAAAAAAALAAoABgAAAAAAAAAAAAsA//////////8AAAwA//////////8AAA0A//////////8BAAsA//////////8BAAwA//////////8BAA0A//////////8CAAsA//////////8CAAwA//////////8CAA0A//////////8DAAsA//////////8DAAwA//////////8DAA0A//////////8EAAsA//////////8EAAwA//////////8EAA0A//////////8FAAsA//////////8FAAwA//////////8FAA0A//////////8GAAsA//////////8GAAwA//////////8GAA0A//////////8HAAsA//////////8HAAwA//////////8HAA0A//////////8IAAsA//////////8IAAwA//////////8IAA0A//////////8JAAsA//////////8JAAwA//////////8JAA0A//////////8KAAsA//////////8KAAwA//////////8KAA0A//////////8LAAsA//////////8LAAwA//////////8LAA0A//////////8MAAAA//////////8MAAEA//////////8MAAIA//////////8MAAMA//////////8MAAQA//////////8MAAUA//////////8MAAYA//////////8MAAcA//////////8MAAgA//////////8MAAkA//////////8MAAoA//////////8MAAsA//////////8MAAwA//////////8MAA0A//////////8NAAAA//////////8NAAEA//////////8NAAIA//////////8NAAMA//////////8NAAQA//////////8NAAUA//////////8NAAYA//////////8NAAcA//////////8NAAgA//////////8NAAkA//////////8NAAoA//////////8NAAsA//////////8NAAwA//////////8NAA0A//////////8=")
+tile_set = SubResource("TileSet_8hd6v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1320835064]
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=427274289]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_e2ol8")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=962592209]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogBox" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=475938716]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TextDisplay" type="RichTextLabel" parent="CanvasLayer/Control/CenterContainer/DialogBox" unique_id=247785168]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+text = "Das ist random tutorial text"
+fit_content = true
+scroll_active = false
+
+[node name="DropShadow" type="ColorRect" parent="CanvasLayer/Control/CenterContainer/DialogBox/TextDisplay" unique_id=1324104287 instance=ExtResource("10_hk641")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="SkipButton" type="Button" parent="CanvasLayer/Control/CenterContainer/DialogBox" unique_id=1480429505]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+text = "Skip"
+
+[node name="DropShadow" type="ColorRect" parent="CanvasLayer/Control/CenterContainer/DialogBox/SkipButton" unique_id=1242048236 instance=ExtResource("10_hk641")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.65)

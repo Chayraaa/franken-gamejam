@@ -31,6 +31,15 @@ texture = ExtResource("3_aaqvx")
 scale = Vector2(1.0126793, 1.4935435)
 shape = SubResource("RectangleShape2D_q20h5")
 
+[node name="Event" type="RichTextLabel" parent="." unique_id=1300601390]
+unique_name_in_owner = true
+offset_left = -75.0
+offset_top = -23.0
+offset_right = 85.0
+offset_bottom = 17.0
+mouse_filter = 2
+text = "EVENT APPEARED"
+
 [connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_mouse_exited"]

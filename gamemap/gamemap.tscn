@@ -9,6 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://coe00ls7bj25g" path="res://gamemap/interactables/turbine_2d.tscn" id="7_3px3d"]
 [ext_resource type="PackedScene" uid="uid://be0swjhlr6k6v" path="res://gamemap/interactables/coolingwaterres_2d.tscn" id="8_trss4"]
 [ext_resource type="PackedScene" uid="uid://wsmoeew7p2d6" path="res://gamemap/interactables/warmwaterres_2d.tscn" id="9_prf1e"]
+[ext_resource type="Theme" uid="uid://dnh48achojqdj" path="res://ui/ui-theme.tres" id="10_waugi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_waugi"]
+bg_color = Color(0.07971346, 0.716044, 0.36200047, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="Gamemap" type="Node2D" unique_id=1799448745]
 script = ExtResource("1_q8kq8")
@@ -60,4 +69,100 @@ position = Vector2(797, 248)
 [node name="warmwaterres2D" parent="." unique_id=1909038546 instance=ExtResource("9_prf1e")]
 position = Vector2(833, 77)
 
+[node name="Bars" type="CanvasLayer" parent="." unique_id=189745928]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="Bars" unique_id=1926545163]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("10_waugi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bars/Control" unique_id=1385710728]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Bars/Control/VBoxContainer" unique_id=1730364009]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bars/Control/VBoxContainer" unique_id=1500726841]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control3" type="Control" parent="Bars/Control/VBoxContainer/HBoxContainer" unique_id=1618853588]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bars/Control/VBoxContainer/HBoxContainer" unique_id=721022898]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="Bars/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1192041031]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+value = 100.0
+
+[node name="Label" type="Label" parent="Bars/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=494316525]
+layout_mode = 2
+text = "Reactor Health"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="Bars/Control/VBoxContainer/HBoxContainer" unique_id=1971419974]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Bars/Control/VBoxContainer/HBoxContainer" unique_id=19204405]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="RepairBar" type="ProgressBar" parent="Bars/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1446205161]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_waugi")
+
+[node name="Label" type="Label" parent="Bars/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1673709308]
+layout_mode = 2
+text = "Repair Status"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Bars/Control/VBoxContainer/HBoxContainer" unique_id=1683770409]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
+mouse_filter = 2
+
+[node name="Control2" type="Control" parent="Bars/Control/VBoxContainer" unique_id=1012311981]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
 [connection signal="input_event" from="waterpumps2D" to="." method="_on_waterpumps_2d_input_event"]
+[connection signal="input_event" from="reactorroom2D" to="." method="_on_reactorroom_2d_input_event"]
+[connection signal="input_event" from="generator2D" to="." method="_on_generator_2d_input_event"]
+[connection signal="input_event" from="fridge2D" to="." method="_on_fridge_2d_input_event"]
+[connection signal="input_event" from="turbine2D" to="." method="_on_turbine_2d_input_event"]
+[connection signal="input_event" from="coolingwaterres2D" to="." method="_on_coolingwaterres_2d_input_event"]
+[connection signal="input_event" from="warmwaterres2D" to="." method="_on_warmwaterres_2d_input_event"]

@@ -47,6 +47,19 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(2, 2, 96, 46)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5msov"]
+texture = ExtResource("1_qv5a7")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(1.0554314, 0.98194885, 97.944565, 48.01805)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu8b0"]
+bg_color = Color(0.9243969, 0.42543226, 0.35676998, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rg4vy"]
 content_margin_left = 24.0
 content_margin_top = 24.0
@@ -72,6 +85,9 @@ Button/styles/hover = SubResource("StyleBoxTexture_bylrb")
 Button/styles/normal = SubResource("StyleBoxTexture_ls611")
 Button/styles/pressed = SubResource("StyleBoxTexture_0kdba")
 Label/fonts/font = ExtResource("1_csppu")
+ProgressBar/fonts/font = ExtResource("1_csppu")
+ProgressBar/styles/background = SubResource("StyleBoxTexture_5msov")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tu8b0")
 RichTextLabel/font_sizes/normal_font_size = 32
 RichTextLabel/fonts/normal_font = ExtResource("1_csppu")
 RichTextLabel/styles/normal = SubResource("StyleBoxTexture_rg4vy")
